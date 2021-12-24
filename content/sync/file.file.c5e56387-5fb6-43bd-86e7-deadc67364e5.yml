@@ -1,0 +1,39 @@
+uuid:
+  -
+    value: c5e56387-5fb6-43bd-86e7-deadc67364e5
+langcode:
+  -
+    value: en
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+filename:
+  -
+    value: Personal-Financial-Statement2016.xls
+uri:
+  -
+    value: 'private://2020-07/Personal-Financial-Statement2016.xls'
+    url: /system/files/2020-07/Personal-Financial-Statement2016.xls
+filemime:
+  -
+    value: application/vnd.ms-excel
+filesize:
+  -
+    value: 57856
+status:
+  -
+    value: true
+created:
+  -
+    value: '2020-07-19T12:20:51+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T12:21:42+00:00'
+    format: 'Y-m-d\TH:i:sP'
+_content_sync:
+  entity_type: file
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

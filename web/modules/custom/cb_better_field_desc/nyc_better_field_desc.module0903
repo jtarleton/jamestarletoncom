@@ -1,0 +1,1994 @@
+<?php
+
+/**
+ * @file
+ * Contains nyc_better_field_desc.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_help().
+ */
+function nyc_better_field_desc_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the nyc_better_field_desc module.
+    case 'help.page.nyc_better_field_desc':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides Business Owners and Admins additional options for field instructions.') . '</p>';
+      return $output;
+    default:
+  }
+}
+
+/**
+ * Implement hook_preprocess_details
+ */
+function nyc_better_field_desc_preprocess_details(&$variables) {
+  $title = (string) $variables['element']['#title'];
+  $element = $variables['element'];
+  $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+
+  $variables['element']['#theme'] = ['form_element__node_ ' . $content_type . '_form__details'];
+
+  // details
+  $is_proj = (isset($element['#id']))
+    ? strpos($element['#id'], 'field-' . $content_type . '-') !== FALSE
+    : FALSE;  
+
+  $nyc_better_field_desc_config = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfiguration' . $content_type);
+  $nyc_better_field_desc_config_styling = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfigurationstyling');
+  if ($is_proj) {
+    $ajax_details_id = NULL;
+
+    // In multivalued elements, after a row is removed or added w/ ajax, Drupal appends unique text 
+    // to the element's ID. So check we still have the correct element ID these cases.
+
+    $is_ajax_request = strpos($element['#id'], '--') !== FALSE 
+      && substr_count($element['#id'], '--') === 1;
+
+    if ($is_ajax_request) {
+      $details_id_parts = explode('--', $element['#id']);
+      reset($details_id_parts);
+      $ajax_details_id = current($details_id_parts);
+    }
+
+    $details_id = isset($ajax_details_id) ? $ajax_details_id : $element['#id']; 
+    $fld = (string) $details_id; 
+    $fld =\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->elementIdToField($fld);
+
+    $project_header_instr_val = $nyc_better_field_desc_config->get($fld);
+    $project_header_instr = \Drupal\Core\Field\FieldFilteredMarkup::create($project_header_instr_val);
+
+    $variables['description_display'] = 'before';
+    $variables['better_desc'] = $project_header_instr; 
+    //$variables['better_desc'] = TRUE;
+    $variables['better_desc_style'] = $nyc_better_field_desc_config_styling->get('better_desc_style');
+  }  
+}
+
+/**
+ * Implement hook_preprocess_fieldset
+ */
+function nyc_better_field_desc_preprocess_fieldset(&$variables) {
+
+  $title = NULL;
+  $element = NULL;
+  $all_content_types = [];
+  $content_type = NULL;
+  $is_proj = NULL;
+  $is_map = NULL;
+  $nyc_better_field_desc_config = NULL;
+  $nyc_better_field_desc_config_styling = NULL;
+  $fld = NULL;
+  $project_header_instr_val = NULL;
+  $project_header_instr = NULL;
+   $element = $variables['element']; 
+
+if($element['#id'] === 'edit-field-link-0') {
+unset($element['#bootstrap_panel']);
+//die(var_export($element['#theme_wrappers'], 1)); 
+
+}
+
+
+  if (isset($variables['element'])) {
+    if (isset($variables['element']['#title'])) {
+      $title = (string) $variables['element']['#title']; 
+    }
+   
+  
+    $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+    $is_proj = strpos($element['#id'], 'field-project-duration') !== FALSE 
+    || strpos($element['#id'], 'field-project-features') !== FALSE;
+
+    $is_content_type = FALSE;
+    $is_map = strpos($element['#id'], 'map-fieldset') !== FALSE;
+    if ($is_map) {
+      $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('map');
+    }
+    else if (!$is_proj) {
+      $form_id = (isset($variables['element']['#form_id'])) ? $variables['element']['#form_id'] : $element['#id'];
+      $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+      if (!empty($content_type) && $content_type != 'project') {
+        $is_content_type = TRUE;
+      }
+    }
+    $variables['element']['#theme'] = ['form_element__node_' . $content_type . '_form__fieldset'];
+
+    $nyc_better_field_desc_config = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfiguration' . $content_type);
+    $nyc_better_field_desc_config_styling = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfigurationstyling');
+    if ($is_proj || $is_map || $is_content_type) {
+
+      $fld =\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->elementIdToField($element['#id']);
+      
+
+      if ($is_map) {
+        $project_header_instr_val = $nyc_better_field_desc_config->get('feedback-map'); 
+      }
+      else {
+        $project_header_instr_val = $nyc_better_field_desc_config->get($fld); 
+      }
+      $project_header_instr = \Drupal\Core\Field\FieldFilteredMarkup::create($project_header_instr_val);
+      $variables['description_display'] = 'before';
+      $variables['better_desc'] = $project_header_instr; 
+      $variables['better_desc_style'] = $nyc_better_field_desc_config_styling->get('better_desc_style');
+    }  
+  }
+}
+
+/**
+ * Implement hook_preprocess_table
+ */
+function nyc_better_field_desc_preprocess_table(&$variables) {
+
+
+  $title = (isset($variables['element']['#title'])) ? (string) $variables['element']['#title'] : NULL; 
+
+  $element = (isset($variables['element'])) ? $variables['element'] : NULL;
+
+  $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  $attrs = $variables['attributes'];
+
+  $found_project_in_id = FALSE;
+  $found_project_in_id = (isset($attrs['id'])) 
+    ? strpos($attrs['id'], 'project') !== FALSE 
+    : FALSE;
+  
+  if ($found_project_in_id) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  }
+
+  $found_map_in_id = FALSE;
+  $found_map_in_id = (isset($attrs['id'])) 
+    ? strpos($attrs['id'], 'map') !== FALSE
+    : FALSE;
+  
+  if ($found_map_in_id) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('map');
+  }
+  else if (!$found_project_in_id) {
+    $form_id = (isset($variables['element']['#form_id'])) ? $variables['element']['#form_id'] : (isset($attrs['id'])) ? $attrs['id'] : NULL;
+    $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+  }
+  
+  $variables['element']['#theme'] = ['form_element__node_' . $content_type . '_form__table'];
+  $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+
+  $is_proj = (isset($attrs['id'])) 
+    ? strpos($attrs['id'], 'field-' . $content_type . '-') !== FALSE 
+    : FALSE;
+
+  $nyc_better_field_desc_config = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfiguration' . $content_type);
+  $nyc_better_field_desc_config_styling = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfigurationstyling');
+  if ($is_proj) {
+    $ajax_tbl_id = NULL;
+    $is_ajax_request = strpos($variables['attributes']['id'], '--') !== FALSE 
+      && substr_count($variables['attributes']['id'], '--') === 1;
+
+    if ($is_ajax_request) {
+      $tbl_id_parts = explode('--', $variables['attributes']['id']);
+      reset($tbl_id_parts);
+      $ajax_tbl_id = current($tbl_id_parts);
+    }
+
+    $tbl_id = isset($ajax_tbl_id) ? $ajax_tbl_id : $variables['attributes']['id'];
+    $fld = (string) $tbl_id ; 
+    $fld = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->elementIdToField($fld);
+    
+    $fld = 'edit-' . $fld;
+
+    $project_header_instr_val = $nyc_better_field_desc_config->get($fld);
+    $project_header_instr = \Drupal\Core\Field\FieldFilteredMarkup::create($project_header_instr_val);
+
+    $variables['description_display'] = 'before';
+    $variables['better_desc'] = $project_header_instr;  
+    $variables['better_desc_style'] = $nyc_better_field_desc_config_styling->get('better_desc_style');
+  }  
+}
+
+/**
+ * Implement hook_preprocess_checkboxes
+ */
+function nyc_better_field_desc_preprocess_checkboxes(&$variables) {
+  $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('map');
+  $title = (string) $variables['element']['#title'];
+  $element = $variables['element'];
+  $variables['element']['#theme'] = ['form_element__node_' . $content_type . '_form__checkboxes'];
+
+  // checkboxes
+  $is_proj_menu = strpos($element['#id'], 'project-menu') !== FALSE;
+  $is_map_comment_cat =  strpos($element['#id'], 'comment-categories') !== FALSE;
+  $is_node_content = NULL;
+  $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  $current_path = \Drupal::service('path.current')->getPath();
+  if ($is_proj_menu || $is_map_comment_cat) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else {
+    $form_id = (isset($variables['element']['#form_id'])) ? $variables['element']['#form_id'] : $element['#id'];
+    $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+    if (!empty($content_type) && ($content_type != 'project' && $content_type != 'map')) {
+      $is_node_content = TRUE;
+    }
+  }
+
+  $nyc_better_field_desc_config = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfiguration' . $content_type); 
+  $nyc_better_field_desc_config_styling = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfigurationstyling'); 
+
+  if ($is_proj_menu || $is_map_comment_cat || $is_node_content) {
+    $fld = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->elementIdToField($element['#id']);
+
+    $instr_val = $nyc_better_field_desc_config->get($fld);
+    $project_header_instr_val = (!empty($instr_val)) ? $instr_val : NULL;
+    $project_header_instr = \Drupal\Core\Field\FieldFilteredMarkup::create($project_header_instr_val);
+    $variables['description_display'] = 'before';
+    $variables['better_desc'] = $project_header_instr;  
+    $variables['better_desc_style'] = $nyc_better_field_desc_config_styling->get('better_desc_style');
+  }
+}
+
+/**
+ * Implement hook_preprocess_checkbox
+ */
+function nyc_better_field_desc_preprocess_checkbox(&$variables) {
+  $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+
+  $is_map = strpos($variables['element']['#form_id'], 'map') !== FALSE;
+  $is_proj = strpos($variables['element']['#form_id'], 'project') !== FALSE;
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  $current_path = \Drupal::service('path.current')->getPath();
+  if ( $is_map ||  $is_proj) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else {
+    $form_id = (isset($variables['element']['#form_id'])) ? $variables['element']['#form_id'] : 'project';
+    $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+  }
+
+  $title = (string) $variables['element']['#title'];
+  $element = $variables['element'];
+  $variables['element']['#theme'] = ['form_element__node_' . $content_type . '_form__checkbox'];
+
+  // Skip if the current checkbox is part of a subfor or an field not part of the custom Field Instruction settings.
+  // Only apply custom help text single checkboxes related to project or map fields.
+  // (e.g. 
+  //       edit-field-city-wide-project-value, edit-field-private-content-value
+  //       edit-field-show-in-project-menu-value
+  // )
+
+  // Don't apply to checkboxes for "published status" or checkboxes within subforms.
+  /* 
+      Skip these: 
+      edit-field-project-documents-0-subform-field-show-in-list-value
+      edit-field-project-videos-0-subform-field-show-in-list-value
+      edit-path-0-pathauto
+      edit-promote-value
+      edit-sticky-value
+      edit-status-value
+  */
+
+  $is_proj_menu = (
+      strpos($element['#id'], $content_type) !== FALSE 
+      || strpos($element['#id'], 'project-menu') !== FALSE
+    ) && strpos($element['#id'], 'subform') === FALSE;
+
+  $is_private_content = strpos($element['#id'], 'private')!== FALSE;
+  $is_show_in_list = strpos($element['#id'], 'show-in-list')!== FALSE;
+  $is_featured_topic = strpos($element['#id'], 'mark-featured')!== FALSE;
+
+  $nyc_better_field_desc_config = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfiguration' . $content_type); 
+
+  $nyc_better_field_desc_config_styling = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfigurationstyling');
+  
+
+  if ($is_proj_menu || $is_private_content || $is_show_in_list || $is_featured_topic) {
+    $fld = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->elementIdToField($element['#id']);
+
+    $project_header_instr_val = $nyc_better_field_desc_config->get($fld);
+    $project_header_instr = \Drupal\Core\Field\FieldFilteredMarkup::create($project_header_instr_val);
+    $variables['description_display'] = (!$is_private_content) ? 'before' : 'after';
+    $variables['better_desc'] = $project_header_instr;  
+    $variables['better_desc_style'] = $nyc_better_field_desc_config_styling->get('better_desc_style');
+  }
+}
+
+/**
+ * implement hook_form_element
+ * @param array
+ */
+function nyc_better_field_desc_preprocess_form_element(&$variables) {
+  
+  if (isset($variables['element'])) {
+    /* from contrib module: themable_forms */
+    if (isset($variables['element']['#form_id'])) {
+      $variables['label']['#form_id'] = $variables['element']['#form_id'];
+    }
+    if (isset($variables['element']['#type'])) {
+      $variables['label']['#form_element_type'] = $variables['element']['#type'];
+    } 
+    /* /end themable_forms */
+
+    $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+
+
+    $is_map = (isset($variables['label']['#form_id'])) ? strpos($variables['label']['#form_id'], 'map') !== FALSE : FALSE;
+
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  $form_id = (isset($variables['element']['#form_id'])) ? $variables['element']['#form_id'] : 'project';
+
+  if (strpos($form_id, 'project') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  }
+  else if (strpos($form_id, 'map') !== FALSE) {
+   $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('map');
+  }
+  else {
+    $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+  }
+  /*
+  $config = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfiguration' . $content_type);
+  $config->getRawData();*/
+
+
+    $title = (isset($variables['element']['#title'])) ? (string) $variables['element']['#title']: NULL;
+    $element = (isset($variables['element'])) ? $variables['element']: NULL;
+    $is_header = (isset($element['#id'])) ? strpos($element['#id'], 'header') !== FALSE : FALSE;
+
+    $is_proj = (isset($variables['element']['#form_id'])) ? strpos((string)$variables['element']['#form_id'], $content_type) !== FALSE : FALSE;
+    $is_private_content = (isset($element['#id'])) ? strpos($element['#id'], 'project-image')!== FALSE : FALSE;
+    
+    $nyc_better_field_desc_config = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfiguration' . $content_type);
+
+    $nyc_better_field_desc_config_styling = \Drupal::service('config.factory')->getEditable('nyc_better_field_desc.nycbetterfielddescconfigurationstyling');
+
+
+    $fld = NULL;
+    if(is_array($element)) {
+      $fld = (isset($element['#id'])) 
+        ? \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->elementIdToField($element['#id']) : 
+        NULL; 
+
+      $doc = (isset($element['#id'])) ? strpos($element['#id'], 'document')!== FALSE : NULL;
+      
+
+      if ($doc) {
+        //edit-field-document-subform-field-document-title
+        
+       // die(var_dump($fld));
+
+
+      //  die(var_dump($nyc_better_field_desc_config->getRawData()));
+
+      }
+    }
+
+
+    $is_proj_target = strpos($fld, 'project-target')!== FALSE;
+
+
+    if ($is_proj_target) {
+      $fld = 'edit-field-project';
+    }
+    
+
+
+
+
+    $project_header_instr_val = $nyc_better_field_desc_config->get($fld);
+    $project_header_instr  = NULL;
+    if (is_string($project_header_instr_val)) {
+      $project_header_instr = \Drupal\Core\Field\FieldFilteredMarkup::create($project_header_instr_val); 
+    }
+    
+
+    $is_title = empty($project_header_instr) && strpos($fld, 'title')!== FALSE  && strpos($fld, 'field') === FALSE;
+   $is_body = empty($project_header_instr) && strpos($fld, 'body')!== FALSE  && strpos($fld, 'field') === FALSE;
+    if (!$is_private_content) {
+      $variables['description_display'] = 'before'; 
+    }
+    $variables['better_desc'] = NULL;
+    $variables['better_desc_style'] = $nyc_better_field_desc_config_styling->get('better_desc_style' );
+
+      $variables['better_desc'] = $is_title 
+        ? $nyc_better_field_desc_config->get('title') 
+        : $project_header_instr;
+      if (empty($variables['better_desc'])) {
+        $variables['better_desc'] = $is_body
+          ? $nyc_better_field_desc_config->get('body') 
+          : $project_header_instr; 
+      }
+
+  }
+}
+
+/**
+ * Implement hook_theme_registry_alter
+ * 
+ * Implementing hook_theme_registry_alter allows using templates in the module directory instead of the theme directory.
+ * @param array
+ */
+function nyc_better_field_desc_theme_registry_alter(&$theme_registry) {
+  $module_handler = \Drupal::service('module_handler');
+  $module_path = $module_handler->getModule('nyc_better_field_desc')->getPath();
+
+
+$bootstrap_key = array_search('bootstrap_preprocess',  $theme_registry['fieldset']['preprocess functions']);
+unset($theme_registry['fieldset']['preprocess functions'][$bootstrap_key]);
+
+$theme_registry['fieldset']['theme path'] = $module_path . '/templates/project_link';
+$theme_registry['fieldset']['template']= 'form-element--node-project-link-edit-form--fieldset';
+$theme_registry['fieldset']['path'] =  $module_path . '/templates/project_link';
+$theme_registry['fieldset']['override preprocess functions'] = TRUE;
+//die('<pre>'.var_export($theme_registry['fieldset'],1 ));
+
+
+
+  $selected_content_types = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineNames();
+
+  // Add file name suggestions for the theme hook. 
+  foreach ($selected_content_types as $content_type) {
+    // Managed file
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__managed_file'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__managed_file']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__managed_file']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__managed_file']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type. '-form--textarea' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__managed_file']['template'] = 'form-element--node-' . $content_type . '-form--managed-file'; 
+    }
+    
+    // TextArea
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__textarea'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__textarea']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__textarea']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__textarea']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type. '-form--textarea' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__textarea']['template'] = 'form-element--node-' . $content_type . '-form--textarea'; 
+    }
+
+    // Textfield
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__textfield'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__textfield']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__textfield']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__textfield']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-form--textfield' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__textfield']['template'] = 'form-element--node-' . $content_type . '-form--textfield'; 
+    }
+
+    // Checkboxes 
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__checkboxes'])) { 
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__checkboxes']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__checkboxes']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__checkboxes']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'checkboxes.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__checkboxes']['template'] = 'form-element--node-' . $content_type . '-form--checkboxes'; 
+    }
+
+    // Checkbox form-element--node-map-form--checkbox.html.twig
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__checkbox'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__checkbox']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__checkbox']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__checkbox']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type. '-form--checkbox.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__checkbox']['template'] = 'form-element--node-' . $content_type . '-form--checkbox'; 
+    } 
+
+    // Table
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__table'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__table']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__table']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__table']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'table.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__table']['template'] = 'form-element--node-' . $content_type . '-form--table'; 
+    }
+
+    // Fieldset
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__fieldset'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__fieldset']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__fieldset']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__fieldset']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'fieldset.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__fieldset']['template'] = 'form-element--node-' . $content_type . '-form--fieldset'; 
+    }
+
+    // Details
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__details'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__details']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__details']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__details']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'details.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__details']['template'] = 'form-element--node-' . $content_type . '-form--details'; 
+    }
+
+    // Select
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__select'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__select']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__select']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__select']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-form--entity-select' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__select']['template'] = 'form-element--node-' . $content_type . '-form--select'; 
+    }
+
+    /* TextArea */
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__textarea'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textarea']['theme paths'] = array(0 => $module_path . '/templates/' .  $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textarea']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textarea']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-project-edit-form--textarea' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textarea']['template'] = 'form-element--node-' . $content_type . '-edit-form--textarea'; 
+    } 
+
+    /* Managed file */
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__managed_file'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textfield']['theme paths'] = array(0 => $module_path . '/templates/' .  $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textfield']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textfield']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-edit-form--textfield.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textfield']['template'] = 'form-element--node-' . $content_type . '-edit-form--managed-file'; 
+    } 
+
+    /* Textfield */
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__textfield'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textfield']['theme paths'] = array(0 => $module_path . '/templates/' .  $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textfield']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textfield']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-edit-form--textfield.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__textfield']['template'] = 'form-element--node-' . $content_type . '-edit-form--textfield'; 
+    } 
+
+    /* Checkbox */
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__checkbox'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__checkbox']['theme paths'] = array(0 => $module_path . '/templates/' .  $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__checkbox']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__checkbox']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-edit-form--checkbox.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__checkbox']['template'] = 'form-element--node-' . $content_type . '-edit-form--checkbox'; 
+    } 
+
+    /* Details */
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__details'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__details']['theme paths'] = array(0 => $module_path . '/templates/' .  $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__details']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__details']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'details.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__details']['template'] = 'form-element--node-' . $content_type . '-edit-form--details'; 
+    }
+
+    // Autocomplete
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__entity_autocomplete'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__entity_autocomplete']['theme paths'] = array(0 => $module_path . '/templates/'.$content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__entity_autocomplete']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__entity_autocomplete']['path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__entity_autocomplete']['template'] = 'form-element--node-' . $content_type . '-edit-form--entity-autocomplete'; 
+    } 
+    // Autocomplete
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__entity_autocomplete'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__entity_autocomplete']['theme paths'] = array(0 => $module_path . '/templates/'.$content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__entity_autocomplete']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__entity_autocomplete']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-edit-form--entity-autocomplete' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__entity_autocomplete']['template'] = 'form-element--node-' . $content_type . '-form--entity-autocomplete'; 
+    } 
+
+    // Number
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__number'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__number']['theme paths'] = array(0 => $module_path . '/templates/'.$content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__number']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__number']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-edit-form--entity-autocomplete' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__number']['template'] = 'form-element--node-' . $content_type . '-edit-form--number'; 
+    } 
+    // Number
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__number'])) {
+
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__entity_number']['theme paths'] = array(0 => $module_path . '/templates/' . $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__entity_number']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__entity_number']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-edit-form--entity-autocomplete' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__entity_number']['template'] = 'form-element--node-' . $content_type . '-form--number'; 
+    } 
+
+    //Select
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__select'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__select']['theme paths'] = array(0 => $module_path . '/templates/' .  $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__select']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__select']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-edit-form--entity-select' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__select']['template'] = 'form-element--node-' . $content_type . '-edit-form--select'; 
+    }
+
+    // Table
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__table'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__table']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__table']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__table']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'table.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__table']['template'] = 'form-element--node-' . $content_type . '-edit-form--table'; 
+    }
+    //Managed Image
+    if (isset($theme_registry['form_element__node_' . $content_type . '_form__managed_image'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_form__managed_image']['theme paths'] = array(0 => $module_path . '/templates/'. $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_form__managed_image']['theme path'] = $module_path . '/templates/'. $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_form__managed_image']['path'] = $module_path . '/templates/'. $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type. '-form--textarea' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_form__managed_file']['template'] = 'form-element--node-' . $content_type . '-form--managed-file'; 
+    }
+    /* Managed Image */
+    if (isset($theme_registry['form_element__node_' . $content_type . '_edit_form__managed_image'])) {
+      // tell the theme system to look in the "templates" subdirectory within our module directory
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__managed_image']['theme paths'] = array(0 => $module_path . '/templates/' .  $content_type);
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__managed_image']['theme path'] = $module_path . '/templates/' .  $content_type;
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__managed_image']['path'] = $module_path . '/templates/' .  $content_type;
+      // tell the theme system to use 'form-element--node-' . $content_type . '-edit-form--textfield.html.twig' as the template file
+      $theme_registry['form_element__node_' . $content_type . '_edit_form__managed_image']['template'] = 'form-element--node-' . $content_type . '-edit-form--managed-image'; 
+    }
+  }
+}
+
+/** 
+ * @param array
+ * @param object
+ * @return array
+ * Validate handler for settings forms
+ */
+function nyc_better_field_desc_form_validate(array $form, FormStateInterface $form_state) {
+  $vals = $form_state->getValues();
+  $blockword = 'blockword';
+  $str_limit = 5000;
+  $invalid_conditions = [
+    'edit-field-project-description' => isset($vals['edit-field-project-description']) 
+      ? strpos($vals['edit-field-project-description'] , $blockword) !== FALSE : FALSE,
+    'title' => strlen($vals['title']) > $str_limit
+  ];
+  $invalid_conditions_msgs = [
+    'edit-field-project-description' => "Invalid word \"$blockword\" in description.",
+    'title' => "Title should be no more than $str_limit characters.",
+  ];
+  // Check invalid conditions
+  foreach ($invalid_conditions as $field_name => $invalid_condition) {
+    if ($invalid_condition) {
+      $form_state->setErrorByName($field_name, t($invalid_conditions_msgs[$field_name]));
+      break; 
+    }
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_suggestions_form_element_alter().
+ * @param array
+ * @param object implementing FormStateInterface
+ * @param string
+ */
+function nyc_better_field_desc_form_alter(&$form,  &$form_state, $form_id){
+
+  nyc_better_field_desc_attach_form_id($form, $form_id);
+
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($form_id, 'project') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else if (strpos($form_id, 'map') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else {
+    $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+  }
+
+  $form['#attached']['library'][] = 'nyc_better_field_desc/nyc_better_field_desc.full_library';
+  
+  // Validate project and map help text setting forms
+  if($form_id === 'nyc_better_field_desc_configuration_form_project'
+    || $form_id === 'nyc_better_field_desc_configuration_form_map') {
+    $form['#validate'][] = 'nyc_better_field_desc_form_validate'; 
+  }
+
+  if ($content_type ==='project' || $content_type === 'map' || !empty($content_type)) {
+    foreach ($form as $key => $value) {
+      if (strpos($key, 'field_') === 0) {
+        $form[$key]['widget']['#parent_form_id'] = $form_id;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_text_format_wrapper.
+ * @param array
+ */
+function nyc_better_field_desc_preprocess_text_format_wrapper(&$variables) {
+  return $variables;
+}
+
+/**
+ * Implements hook_preprocess_text_format_wrapper.
+ * @param array
+ */
+function nyc_better_field_desc_theme_suggestions_text_format_wrapper_alter(array &$suggestions, array $variables) {
+
+}
+
+/**
+ * Implements hook_theme_suggestions_form_element().
+ */
+function nyc_better_field_desc_theme_suggestions_form_element(array $variables) {
+  $suggestions = ['form_element__type__' . $variables['element']['#type']];
+  if (isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'form_element__form_id__' . $variables['element']['#form_id'];
+    $suggestions[] = 'form_element__' . $variables['element']['#form_id'] . '__' . $variables['element']['#type'];
+  }
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_form_element_checkboxes().
+ */
+function nyc_better_field_desc_theme_suggestions_checkboxes(array $variables) {
+  $suggestions = ['form_element__type__checkboxes'];
+  if (isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'form_element__form_id__' . $variables['element']['#form_id'];
+    $suggestions[] = 'form_element__' . $variables['element']['#form_id'] . '__checkboxes';
+  }
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_form_element_table(). array &$suggestions, array $variables
+ */
+function nyc_better_field_desc_theme_suggestions_table(array $variables) {
+  $form_id = (isset($variables['element']['#form_id'])) ? $variables['element']['#form_id'] : 'project';
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($form_id, 'project') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else if (strpos($form_id, 'map') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else {
+    $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+  }
+  $suggestions = ['form_element__type__table'];
+  //if (isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'form_element__form_id__node_' . $content_type . '_form';
+    $suggestions[] = 'form_element__node_' . $content_type . '_form__table';
+  //}
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_form_element_fieldset().
+ */
+function nyc_better_field_desc_theme_suggestions_fieldset(array $variables) {
+  $suggestions[] = 'form_element__type__fieldset';
+
+  $form_id = (isset($variables['element']['#form_id'])) ? $variables['element']['#form_id'] : 'project';
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($form_id, 'project') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else if (strpos($form_id, 'map') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else {
+    $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+  }
+
+  if (isset($variables['element']['#form_id']) && strpos($variables['element']['#form_id'], 'edit') !== FALSE) { 
+    $suggestions[] = 'form_element__node_' . $content_type . '_edit_form__fieldset';
+  }
+
+  $suggestions[] = 'form_element__node_' . $content_type . '_form__fieldset';
+
+  if ($variables['element']['#attributes']['data-drupal-selector'] === 'edit-map-fieldset') {
+    $suggestions[] = 'form_element__node_' . $content_type . '_form__fieldset';
+  }
+  if ($variables['element']['#attributes']['data-drupal-selector'] === 'edit-edit-map-fieldset')  {
+    $suggestions[] = 'form_element__node_' . $content_type . '_edit_form__fieldset';
+  }
+  
+  return array_reverse($suggestions);
+}
+function nyc_better_field_desc_theme_suggestions_fieldset_alter(array &$suggestions, array $variables) {
+ 
+  array_splice($suggestions, 1, 0,  'form_element__type__fieldset');
+
+  $form_id = (isset($variables['element']['#form_id'])) ? $variables['element']['#form_id'] : 'project';
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('project');
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($form_id, 'project') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else if (strpos($form_id, 'map') !== FALSE) {
+    $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+  }
+  else {
+    $content_type = nyc_better_field_desc_get_form_content_type($form_id, $content_type);
+  }
+
+  if (isset($variables['element']['#form_id']) && strpos($variables['element']['#form_id'], 'edit') !== FALSE) { 
+    array_splice($suggestions, 1, 0,  'form_element__node_' . $content_type . '_edit_form__fieldset');
+  }
+
+  array_splice($suggestions, 1, 0,  'form_element__node_' . $content_type . '_form__fieldset');
+
+  if ($variables['element']['#attributes']['data-drupal-selector'] === 'edit-map-fieldset') {
+    array_splice($suggestions, 1, 0, 'form_element__node_' . $content_type . '_form__fieldset');
+  }
+  if ($variables['element']['#attributes']['data-drupal-selector'] === 'edit-edit-map-fieldset')  {
+    array_splice($suggestions, 1, 0, 'form_element__node_' . $content_type . '_edit_form__fieldset');
+  }
+ //  die(var_export($suggestions,1 ));
+}
+
+/**
+ * Helper to get content type from current path form.
+ */
+function nyc_better_field_desc_get_form_content_type($form_id, $content_type) {
+  if (empty($content_type) || $content_type === 'project') {
+    $node_types = array('overview_page', 'document', 'news', 'event', 'video', 'project_link', 'list_page', 'page', 'project', 'map');
+    foreach ($node_types as $node_type) {
+      if (strpos($form_id, $node_type) !== FALSE) {
+        $current_path = \Drupal::service('path.current')->getPath();
+        $node_ctype = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeByCurrentPath($current_path );
+        if (!empty($node_ctype)) {
+          $content_type = $node_ctype;
+        }
+        break;
+      }
+    }
+  }
+  return $content_type;
+}
+
+/**
+ * Implements hook_theme_suggestions_form_element_details().
+ */
+function nyc_better_field_desc_theme_suggestions_details(array $variables) {
+  $suggestions = ['form_element__type__details'];
+  if (isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'form_element__form_id__' . $variables['element']['#form_id'];
+    $suggestions[] = 'form_element__' . $variables['element']['#form_id'] . '__details';
+  }
+
+  return $suggestions;
+}
+
+/**
+ * Attaches form id to all form elements.
+ *
+ * @param $form
+ *   The form or form element which children should have form id attached.
+ * @param $form_id
+ *   The form id attached to form elements.
+ *
+ * @return array
+ */
+function nyc_better_field_desc_attach_form_id(&$form, $form_id) {
+  foreach (Element::children($form) as $child) {
+    if (!isset($form[$child]['#form_id'])) {
+      $form[$child]['#form_id'] = $form_id;
+    }
+    nyc_better_field_desc_attach_form_id($form[$child], $form_id);
+  }
+}
+
+/**
+ * Implement hook_theme 
+ */  
+function nyc_better_field_desc_theme($existing, $type, $theme, $path) {
+
+
+//die('<pre>'.var_export($type, 1));
+
+
+  $module_handler = \Drupal::service('module_handler');
+
+  $module_path = $module_handler->getModule('nyc_better_field_desc')->getPath() .'/';
+
+  $all_content_types = array_keys(\Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getAllContentTypes());
+  $content_type = \Drupal::service('nyc_better_field_desc.nyc_better_field_desc_helper_fns')->getContentTypeMachineName('map');
+
+  $theme_registry_addition = array(
+    'form_element__node_' . $content_type . '_form__textfield' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--textfield',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__textfield' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'template' => 'form-element--node-' . $content_type. '-form--textfield',
+
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__managed_file' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--managed-file',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__managed_file' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'template' => 'form-element--node-' . $content_type. '-form--managed-file',
+
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_form__managed_image' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--managed-image',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__managed_image' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'template' => 'form-element--node-' . $content_type. '-form--managed-image',
+
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+
+    'form_element__node_' . $content_type . '_form__textarea' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--textarea',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__textarea' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--textarea',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__table' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--table',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_table',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_table'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__details' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--details',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_details',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_details'
+            
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__details' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--details',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_details',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_details'
+            
+          )
+      ),
+
+'fieldset' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--fieldset',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_fieldset',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_fieldset'
+          )
+      ), 
+
+    'form_element__node_' . $content_type . '_form__fieldset' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--fieldset',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_fieldset',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_fieldset'
+          )
+      ),   
+    'form_element__node_' . $content_type . '_edit_form__fieldset' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-edit-form--fieldset',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_fieldset',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_fieldset'
+          )
+      ),            
+    'form_element__node_' . $content_type . '_form__entity_autocomplete' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--entity-autocomplete',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),   
+    'form_element__node_' . $content_type . '_edit_form__entity_autocomplete' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-edit-form--entity-autocomplete',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),      
+
+
+    'form_element__node_' . $content_type . '_form__number' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--number',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),   
+    'form_element__node_' . $content_type . '_edit_form__number' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-edit-form--number',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),  
+
+    'form_element__node_' . $content_type . '_edit_form__checkboxes' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--checkboxes',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_checkboxes',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_checkboxes'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__checkboxes' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--checkboxes',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_checkboxes',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_checkboxes'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__checkbox' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--checkbox',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'template_preprocess_input',
+            'nyc_better_field_desc_preprocess_checkbox'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__checkbox' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--checkbox',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'template_preprocess_input',
+            'nyc_better_field_desc_preprocess_checkbox'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__select' => array(
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--select',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__select' => array(
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--select',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),  
+  );
+
+
+  $content_type = 'project';
+
+
+  $theme_registry_addition2 = array(
+    'form_element__node_' . $content_type . '_form__textfield' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--textfield',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__textfield' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'template' => 'form-element--node-' . $content_type. '-form--textfield',
+
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_form__textarea' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--textarea',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__textarea' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--textarea',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_form__table' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--table',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_table',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_table'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_edit_form__table' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-edit-form--table',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_table',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_table'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__details' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--details',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_details',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_details'
+            
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__details' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--details',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_details',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_details'
+            
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__fieldset' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--fieldset',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_fieldset',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_fieldset'
+          )
+      ),   
+    'form_element__node_' . $content_type . '_edit_form__fieldset' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--fieldset',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_fieldset',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_fieldset'
+          )
+      ),            
+    'form_element__node_' . $content_type . '_edit_form__checkboxes' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--checkboxes',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_checkboxes',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_checkboxes'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__checkboxes' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--checkboxes',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_checkboxes',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_checkboxes'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__checkbox' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--checkbox',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'template_preprocess_input',
+            'nyc_better_field_desc_preprocess_checkbox'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__checkbox' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--checkbox',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'template_preprocess_input',
+            'nyc_better_field_desc_preprocess_checkbox'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__select' => array(
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--select',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__select' => array(
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--select',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),  
+  );
+
+  $all = $theme_registry_addition + $theme_registry_addition2;
+
+  foreach ($all_content_types as $content_type) {
+    if ($content_type != 'project' && $content_type != 'map') {
+   $theme_registry_addition3 = array(
+    'form_element__node_' . $content_type . '_form__textfield' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--textfield',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_edit_form__textfield' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'template' => 'form-element--node-' . $content_type. '-form--textfield',
+
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+   'form_element__node_' . $content_type . '_form__managed_file' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--managed-file',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__managed_file' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'template' => 'form-element--node-' . $content_type. '-form--managed-file',
+
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_form__managed_image' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--managed-image',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__managed_image' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'template' => 'form-element--node-' . $content_type. '-form--managed-image',
+
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_form__textarea' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--textarea',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__textarea' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--textarea',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_form__table' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--table',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_table',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_table'
+          )
+      ),
+
+    'form_element__node_' . $content_type . '_edit_form__table' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-edit-form--table',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_table',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_table'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__details' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--details',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_details',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_details'
+            
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__details' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--details',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_details',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_details'
+            
+          )
+      ),
+    'bootstrap_panel' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'bootstrap-panel',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_fieldset',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_fieldset'
+          )
+      ), 
+
+    'form_element__node_' . $content_type . '_form__fieldset' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--fieldset',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_fieldset',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_fieldset'
+          )
+      ),   
+    'form_element__node_' . $content_type . '_edit_form__fieldset' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--fieldset',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_fieldset',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_fieldset'
+          )
+      ),            
+    'form_element__node_' . $content_type . '_edit_form__checkboxes' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--checkboxes',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_checkboxes',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_checkboxes'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__checkboxes' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--checkboxes',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_checkboxes',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_checkboxes'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__checkbox' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--checkbox',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'template_preprocess_input',
+            'nyc_better_field_desc_preprocess_checkbox'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__checkbox' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--checkbox',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'template_preprocess_input',
+            'nyc_better_field_desc_preprocess_checkbox'
+          )
+      ),
+    'form_element__node_' . $content_type . '_form__select' => array(
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--select',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),
+    'form_element__node_' . $content_type . '_edit_form__select' => array(
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+       // 'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-form--select',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ), 
+     'form_element__node_' . $content_type . '_form__entity_autocomplete' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--entity-autocomplete',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),   
+    'form_element__node_' . $content_type . '_edit_form__entity_autocomplete' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-edit-form--entity-autocomplete',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ), 
+   'form_element__node_' . $content_type . '_form__number' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type . '-form--number',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),   
+    'form_element__node_' . $content_type . '_edit_form__number' => 
+      array (
+        'render element' => 'element',
+        'type' => 'base_theme_engine',
+        //'theme path' => 'core/themes/classy',
+        'template' => 'form-element--node-' . $content_type. '-edit-form--number',
+        'path' =>  $module_path . 'templates/' . $content_type,
+        'preprocess functions' => 
+          array (
+            'template_preprocess',
+            'template_preprocess_form_element',
+            'contextual_preprocess',
+            'nyc_better_field_desc_preprocess_form_element'
+          )
+      ),  
+ 
+  );
+  $all = $all + $theme_registry_addition3;
+    }
+  }
+  return $all;
+} 
+
+/**
+ * Copied from contrib module: themable_forms
+ * Implements hook_theme_suggestions_form_element_label().
+ * @param array
+ */
+function nyc_better_field_desc_theme_suggestions_form_element_label(array $variables) {
+  $suggestions = [];
+  if (isset($variables['element']['#form_element_type'])) {
+    $suggestions[] = 'form_element_label__type__' . $variables['element']['#form_element_type'];
+  }
+  if (isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'form_element_label__form-id__' . $variables['element']['#form_id'];
+  }
+  if (isset($variables['element']['#form_element_type']) && isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'form_element_label__' . $variables['element']['#form_id'] . '__' . $variables['element']['#form_element_type'];
+  }
+  return $suggestions;
+}

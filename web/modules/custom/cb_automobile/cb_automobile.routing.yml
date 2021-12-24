@@ -1,0 +1,15 @@
+cb_automobile.example:
+  path: '/cb-automobile/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_automobile\Controller\CbAutomobileController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_automobile.settings_form:
+  path: '/admin/config/system/cb-automobile'
+  defaults:
+    _title: 'cb_automobile settings'
+    _form: 'Drupal\cb_automobile\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_automobile configuration'

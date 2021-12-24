@@ -1,0 +1,17 @@
+<?php
+
+function dark_ritual_preprocess_html() {
+	
+	
+}
+
+function dark_ritual_preprocess_page() {
+	
+	
+}
+
+function dark_ritual_theme() {
+
+	$theme = [];	
+
+}

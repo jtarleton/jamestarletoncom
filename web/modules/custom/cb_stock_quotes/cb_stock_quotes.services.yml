@@ -1,0 +1,6 @@
+services:
+  cb_stock_quotes.event_subscriber:
+    class: Drupal\cb_stock_quotes\EventSubscriber\CbStockQuotesSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

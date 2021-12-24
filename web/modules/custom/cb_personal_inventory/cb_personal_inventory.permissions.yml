@@ -1,0 +1,4 @@
+administer cb_personal_inventory configuration:
+  title: 'Administer cb_personal_inventory configuration'
+  description: 'Optional description.'
+  restrict access: true

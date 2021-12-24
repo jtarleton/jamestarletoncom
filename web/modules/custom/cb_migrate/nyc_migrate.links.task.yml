@@ -1,0 +1,11 @@
+# This file defines tabs and connects to a routing.yml entry to each.
+# base_route...?
+
+# It does not define anything in the Drupal admin menu, or a URL path for a route.
+# Look in this module's "links.menu.yml" and "routing.yml" for those settings.
+
+nycmigrate.nycmigrate:
+  route_name : nyc_migrate.nyc_migrate_project
+  title: Migrate
+  base_route: nyc_migrate
+  weight: 10

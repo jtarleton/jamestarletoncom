@@ -1,0 +1,74 @@
+nycmigrate.nycmigrate:
+  path: '/admin/config/nyc-migrate'
+  defaults:
+    _form: '\Drupal\nyc_migrate\Form\NycMigrateForm'
+    _title: 'migrate'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+nycmigrate.example:
+  path: '/nyc-migrate/migrate'
+  defaults:
+    _title: 'Migrate'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateController::build'
+  requirements:
+    _permission: 'access content'
+nycmigrate.batchoverview:
+  path: '/nyc-migrate/batch/overview'
+  defaults:
+    _title: 'Batch Example'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateBatchOverviewController::build'
+  requirements:
+    _permission: 'access content'
+nycmigrate.batchdocuments:
+  path: '/nyc-migrate/batch/documents'
+  defaults:
+    _title: 'Batch Example'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateBatchDocumentsController::build'
+  requirements:
+    _permission: 'access content'
+nycmigrate.batchevents:
+  path: '/nyc-migrate/batch/events'
+  defaults:
+    _title: 'Batch Example'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateBatchEventsController::build'
+  requirements:
+    _permission: 'access content'
+nycmigrate.batchdocs:
+  path: '/nyc-migrate/batch/docs'
+  defaults:
+    _title: 'Batch Example'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateBatchDocumentController::build'
+  requirements:
+    _permission: 'access content'
+nycmigrate.batchvideo:
+  path: '/nyc-migrate/batch/video'
+  defaults:
+    _title: 'Batch Example'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateBatchVideoController::build'
+  requirements:
+    _permission: 'access content'
+nycmigrate.batchvideos:
+  path: '/nyc-migrate/batch/videos'
+  defaults:
+    _title: 'Batch Example'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateBatchVideosController::build'
+  requirements:
+    _permission: 'access content'
+
+
+nycmigrate.batchlinks:
+  path: '/nyc-migrate/batch/links'
+  defaults:
+    _title: 'Batch Example'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateBatchProjectlinkController::build'
+  requirements:
+    _permission: 'access content' 
+nycmigrate.batchsurvey:
+  path: '/nyc-migrate/batch/survey'
+  defaults:
+    _title: 'Batch Example'
+    _controller: '\Drupal\nyc_migrate\Controller\NycMigrateBatchSurveyController::build'
+  requirements:
+    _permission: 'access content'        

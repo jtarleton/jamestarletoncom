@@ -1,0 +1,81 @@
+uuid:
+  -
+    value: 551ec9d4-7057-4592-9c64-e35b2857b242
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T16:36:46+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Career -------------------------------------- Cover Letter Template'
+created:
+  -
+    value: '2020-07-19T16:31:04+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T16:36:46+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected: {  }
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>cover letter example</p>\r\n"
+    format: basic_html
+    processed: '<p>cover letter example</p>'
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2:
+  -
+    display: true
+    description: 'cover letter'
+    target_type: file
+    target_uuid: e5935fba-25d0-4f20-8a6f-c792f3ef3f77
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: 1f8a0bf7-054e-4e3e-802a-61aa0f5da6e1
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    file:
+      - file.file.e5935fba-25d0-4f20-8a6f-c792f3ef3f77
+    taxonomy_term:
+      - taxonomy_term.categories.1f8a0bf7-054e-4e3e-802a-61aa0f5da6e1

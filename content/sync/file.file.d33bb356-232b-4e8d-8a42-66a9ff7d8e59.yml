@@ -1,0 +1,39 @@
+uuid:
+  -
+    value: d33bb356-232b-4e8d-8a42-66a9ff7d8e59
+langcode:
+  -
+    value: en
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+filename:
+  -
+    value: px-telemetry-html.zip
+uri:
+  -
+    value: 'private://2020-07/px-telemetry-html.zip'
+    url: /system/files/2020-07/px-telemetry-html.zip
+filemime:
+  -
+    value: application/zip
+filesize:
+  -
+    value: 2544740
+status:
+  -
+    value: true
+created:
+  -
+    value: '2020-07-19T16:44:46+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T16:45:26+00:00'
+    format: 'Y-m-d\TH:i:sP'
+_content_sync:
+  entity_type: file
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

@@ -1,0 +1,39 @@
+uuid:
+  -
+    value: 3763fda3-2561-4106-919a-ff38e61b2e39
+langcode:
+  -
+    value: en
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+filename:
+  -
+    value: 'ITCS 4 - Candidate Reference Form Template.docx'
+uri:
+  -
+    value: 'private://2020-07/ITCS 4 - Candidate Reference Form Template.docx'
+    url: /system/files/2020-07/ITCS%204%20-%20Candidate%20Reference%20Form%20Template.docx
+filemime:
+  -
+    value: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+filesize:
+  -
+    value: 16958
+status:
+  -
+    value: true
+created:
+  -
+    value: '2020-07-20T11:54:37+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-20T11:56:31+00:00'
+    format: 'Y-m-d\TH:i:sP'
+_content_sync:
+  entity_type: file
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

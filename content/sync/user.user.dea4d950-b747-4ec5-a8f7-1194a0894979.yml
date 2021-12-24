@@ -1,0 +1,49 @@
+uuid:
+  -
+    value: dea4d950-b747-4ec5-a8f7-1194a0894979
+langcode:
+  -
+    value: en
+preferred_langcode:
+  -
+    value: en
+preferred_admin_langcode: {  }
+name:
+  -
+    value: placeholder-for-uid-1
+mail:
+  value: jamesta2rleton@gmail.com
+timezone:
+  -
+    value: America/New_York
+status:
+  value: '0'
+created:
+  -
+    value: '2020-02-29T14:36:45+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-18T18:59:25+00:00'
+    format: 'Y-m-d\TH:i:sP'
+access:
+  -
+    value: '2020-02-29T14:59:46+00:00'
+    format: 'Y-m-d\TH:i:sP'
+login:
+  -
+    value: '2020-02-29T14:56:23+00:00'
+    format: 'Y-m-d\TH:i:sP'
+init: {  }
+roles:
+  - authenticated
+default_langcode:
+  -
+    value: true
+user_picture: {  }
+_content_sync:
+  entity_type: user
+pass:
+  -
+    value: $S$EXDuBC5K/KPfbMSDErCAE7lUvddH8n4CABv31cLHEgrAnGY8t0Rq
+    pre_hashed: true

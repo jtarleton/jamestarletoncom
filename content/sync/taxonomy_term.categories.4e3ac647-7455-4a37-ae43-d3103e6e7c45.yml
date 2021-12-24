@@ -1,0 +1,52 @@
+uuid:
+  -
+    value: 4e3ac647-7455-4a37-ae43-d3103e6e7c45
+langcode:
+  -
+    value: en
+vid:
+  -
+    target_id: categories
+    target_type: taxonomy_vocabulary
+    target_uuid: 9aa55449-3193-45ff-bf1a-715d4c52b866
+revision_created:
+  -
+    value: '2020-07-18T19:14:07+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_user: {  }
+revision_log_message: {  }
+status:
+  -
+    value: true
+name:
+  -
+    value: Clothing
+description:
+  -
+    value: "<p>Clothing</p>\r\n"
+    format: basic_html
+    processed: '<p>Clothing</p>'
+weight:
+  -
+    value: 12
+parent:
+  -
+    target_id: 0
+changed:
+  -
+    value: '2020-07-19T00:17:27+00:00'
+    format: 'Y-m-d\TH:i:sP'
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+_content_sync:
+  entity_type: taxonomy_term
+  entity_dependencies: {  }

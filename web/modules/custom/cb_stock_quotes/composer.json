@@ -1,0 +1,12 @@
+{
+    "name": "crystalbit-us/cb_stock_quotes",
+    "description": "Cron job to poll a web service for updated stock quote data using a Guzzle Client. Front end for providing the latest stock data in a custom block.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "James Tarleton",
+            "email": "jamestarleton@gmail.com"
+        }
+    ],
+    "require": {}
+}

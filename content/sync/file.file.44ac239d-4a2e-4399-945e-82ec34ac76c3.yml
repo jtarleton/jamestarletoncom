@@ -1,0 +1,39 @@
+uuid:
+  -
+    value: 44ac239d-4a2e-4399-945e-82ec34ac76c3
+langcode:
+  -
+    value: en
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+filename:
+  -
+    value: nyc-hotels-list.txt
+uri:
+  -
+    value: 'private://2020-07/nyc-hotels-list.txt'
+    url: /system/files/2020-07/nyc-hotels-list.txt
+filemime:
+  -
+    value: text/plain
+filesize:
+  -
+    value: 1792
+status:
+  -
+    value: true
+created:
+  -
+    value: '2020-07-19T14:58:57+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T14:59:27+00:00'
+    format: 'Y-m-d\TH:i:sP'
+_content_sync:
+  entity_type: file
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

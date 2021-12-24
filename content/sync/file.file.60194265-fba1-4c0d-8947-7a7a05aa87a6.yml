@@ -1,0 +1,39 @@
+uuid:
+  -
+    value: 60194265-fba1-4c0d-8947-7a7a05aa87a6
+langcode:
+  -
+    value: en
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+filename:
+  -
+    value: uhcOxfordCard2.JPG
+uri:
+  -
+    value: 'private://2020-07/uhcOxfordCard2.JPG'
+    url: /system/files/2020-07/uhcOxfordCard2.JPG
+filemime:
+  -
+    value: image/jpeg
+filesize:
+  -
+    value: 2286992
+status:
+  -
+    value: true
+created:
+  -
+    value: '2020-07-19T14:33:27+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T14:33:59+00:00'
+    format: 'Y-m-d\TH:i:sP'
+_content_sync:
+  entity_type: file
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

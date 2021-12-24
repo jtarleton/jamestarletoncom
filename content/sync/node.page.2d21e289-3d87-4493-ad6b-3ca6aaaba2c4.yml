@@ -1,0 +1,72 @@
+uuid:
+  -
+    value: 2d21e289-3d87-4493-ad6b-3ca6aaaba2c4
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-18T21:59:18+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'List of Insurances'
+created:
+  -
+    value: '2020-07-18T19:35:23+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-18T21:59:18+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<ul>\r\n\t<li>Car Insurance (I dont drive)</li>\r\n\t<li><a href=\"https://www.lemonade.com/\">Lemonade </a>Renter Insurance</li>\r\n\t<li>United Healthcare</li>\r\n\t<li>Oxford Healthcare (Not the same as UHC?)</li>\r\n\t<li><a href=\"https://www.aetna.com\">Aetna </a>Health Insurance</li>\r\n\t<li><a href=\"https://www.guardiananytime.com\">Guardian </a>Dental Insurance</li>\r\n\t<li>Metlife Life Insurance (do i have this?)</li>\r\n\t<li>AFLAC (do I have this?)</li>\r\n</ul>\r\n"
+    format: basic_html
+    processed: "<ul><li>Car Insurance (I dont drive)</li>\n\t<li><a href=\"https://www.lemonade.com/\">Lemonade </a>Renter Insurance</li>\n\t<li>United Healthcare</li>\n\t<li>Oxford Healthcare (Not the same as UHC?)</li>\n\t<li><a href=\"https://www.aetna.com\">Aetna </a>Health Insurance</li>\n\t<li><a href=\"https://www.guardiananytime.com\">Guardian </a>Dental Insurance</li>\n\t<li>Metlife Life Insurance (do i have this?)</li>\n\t<li>AFLAC (do I have this?)</li>\n</ul>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2: {  }
+field_tags:
+  - {  }
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

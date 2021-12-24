@@ -1,0 +1,18 @@
+# This file only defines a menu link within the Drupal Admin menu.
+
+# It does not define tabs, or routing info for menu/tab links.
+# Look in this module's "links.task.yml" and "routing.yml" for those settings.
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_project:
+  title: 'Field Instructions'
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_project
+  description: 'Field Instructions'
+  parent: system.admin_config_system
+  weight: 99
+  
+#nyc_better_field_desc.nyc_better_field_desc_configuration_form_map:
+#  title: 'Custom Project Form Field Descriptions Settings'
+#  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_map
+#  description: 'Map Form Field Descriptions Settings'
+#  parent: system.admin_config_system
+#  weight: 99

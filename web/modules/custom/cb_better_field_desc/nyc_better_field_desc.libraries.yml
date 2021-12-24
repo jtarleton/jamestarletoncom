@@ -1,0 +1,7 @@
+nyc_better_field_desc.full_library:
+  version: 1.x
+  header: true
+  css:
+    theme:
+      css/nyc_better_field_desc.css: {}
+

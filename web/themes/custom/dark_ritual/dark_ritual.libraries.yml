@@ -1,0 +1,12 @@
+global-styling:
+  version: 1.x
+  css:
+    base:
+      css/dark_ritual.css: {}
+      css/colors.css: {}
+global-scripts:
+  version: 1.x
+  js:
+    js/dark_ritual.js: {}
+  dependencies:
+    - core/jquery

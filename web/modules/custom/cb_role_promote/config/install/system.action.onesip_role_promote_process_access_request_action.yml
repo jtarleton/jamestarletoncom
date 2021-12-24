@@ -1,0 +1,14 @@
+# modules/custom/onesip_role_promote/config/install/system.action.onesip_role_promote_process_some_access_request_action.yml
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - onesip_role_promote
+  module:
+    - onesip_role_promote
+id: onesip_role_promote_process_access_request_action
+label: 'Process business owner access request action'
+type: node
+plugin: "onesip_role_promote_process_access_request_action"
+configuration: {  }

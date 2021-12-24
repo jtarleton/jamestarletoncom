@@ -1,0 +1,12 @@
+{
+    "name": "crystalbit-us/cb_role_promote",
+    "description": "Custom role promotion and Views Bulk Operation (VBO) functionality.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "James Tarleton",
+            "email": "jamestarleton@gmail.com"
+        }
+    ],
+    "require": {}
+}

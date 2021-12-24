@@ -1,0 +1,12 @@
+{
+    "name": "crystalbit-us/cb_weather",
+    "description": "Retrieve current weather information for a geocoordinate or zipcode and provide a block display.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "James Tarleton",
+            "email": "jamestarleton@gmail.com"
+        }
+    ],
+    "require": {}
+}

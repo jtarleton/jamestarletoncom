@@ -1,0 +1,121 @@
+uuid:
+  -
+    value: d0205c33-152c-46c9-b8af-93955b40eb7e
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-20T11:56:31+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Kforce Docs'
+created:
+  -
+    value: '2020-07-20T11:46:29+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-20T11:56:31+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>Kforce</p>\r\n"
+    format: basic_html
+    processed: '<p>Kforce</p>'
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2:
+  -
+    display: true
+    description: nda
+    target_type: file
+    target_uuid: e61ee5a2-cb58-4ab8-9d08-0cf8639269ea
+  -
+    display: true
+    description: benefits
+    target_type: file
+    target_uuid: 3efd9ca1-c5e2-4e0c-b5f8-3befaf45f3ec
+  -
+    display: true
+    description: references
+    target_type: file
+    target_uuid: 3c9a98a7-0156-4c6b-90ff-cbd9f956b883
+  -
+    display: true
+    description: references
+    target_type: file
+    target_uuid: 3763fda3-2561-4106-919a-ff38e61b2e39
+  -
+    display: true
+    description: nda
+    target_type: file
+    target_uuid: bd42a1b3-cb3f-4a94-8a40-15b606e7c048
+  -
+    display: true
+    description: 'benefits hourly'
+    target_type: file
+    target_uuid: b7a3d001-d463-4aee-a603-93d21721c3e7
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: 264b5714-d79f-473c-9155-bd40d48fcc55
+  -
+    target_type: taxonomy_term
+    target_uuid: 1f8a0bf7-054e-4e3e-802a-61aa0f5da6e1
+  -
+    target_type: taxonomy_term
+    target_uuid: 4a773acd-cf4b-4ede-b411-9b9091da08ee
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    file:
+      - file.file.e61ee5a2-cb58-4ab8-9d08-0cf8639269ea
+      - file.file.3efd9ca1-c5e2-4e0c-b5f8-3befaf45f3ec
+      - file.file.3c9a98a7-0156-4c6b-90ff-cbd9f956b883
+      - file.file.3763fda3-2561-4106-919a-ff38e61b2e39
+      - file.file.bd42a1b3-cb3f-4a94-8a40-15b606e7c048
+      - file.file.b7a3d001-d463-4aee-a603-93d21721c3e7
+    taxonomy_term:
+      - taxonomy_term.categories.264b5714-d79f-473c-9155-bd40d48fcc55
+      - taxonomy_term.categories.1f8a0bf7-054e-4e3e-802a-61aa0f5da6e1
+      - taxonomy_term.categories.4a773acd-cf4b-4ede-b411-9b9091da08ee

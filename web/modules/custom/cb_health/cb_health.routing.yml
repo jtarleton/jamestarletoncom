@@ -1,0 +1,15 @@
+cb_health.example:
+  path: '/cb-health/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_health\Controller\CbHealthController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_health.settings_form:
+  path: '/admin/config/system/cb-health'
+  defaults:
+    _title: 'cb_health settings'
+    _form: 'Drupal\cb_health\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_health configuration'

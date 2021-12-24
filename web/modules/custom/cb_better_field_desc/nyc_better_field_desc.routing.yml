@@ -1,0 +1,109 @@
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_project:
+  path: '/admin/config/nyc-better-field-desc/project'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormProject'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_map:
+  path: '/admin/config/nyc-better-field-desc/map'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormMap'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_page:
+  path: '/admin/config/nyc-better-field-desc/page'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormPage'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_overview_page:
+  path: '/admin/config/nyc-better-field-desc/overview_page'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormOverviewPage'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_document:
+  path: '/admin/config/nyc-better-field-desc/document'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormDocument'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_news:
+  path: '/admin/config/nyc-better-field-desc/news'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormNews'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_event:
+  path: '/admin/config/nyc-better-field-desc/event'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormEvent'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_video:
+  path: '/admin/config/nyc-better-field-desc/video'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormVideo'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_project_link:
+  path: '/admin/config/nyc-better-field-desc/project_link'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormProjectLink'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_list_page:
+  path: '/admin/config/nyc-better-field-desc/list_page'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormListPage'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form_styling:
+  path: '/admin/config/nyc-better-field-desc/styling'
+  defaults:
+    _form: '\Drupal\nyc_better_field_desc\Form\NycBetterFieldDescConfigurationFormStyling'
+    _title: 'Field Instructions'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

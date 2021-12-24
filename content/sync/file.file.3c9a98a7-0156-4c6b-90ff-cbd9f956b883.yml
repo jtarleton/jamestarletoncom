@@ -1,0 +1,39 @@
+uuid:
+  -
+    value: 3c9a98a7-0156-4c6b-90ff-cbd9f956b883
+langcode:
+  -
+    value: en
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+filename:
+  -
+    value: 'ITCS 4 Candidate Reference Form 10-31-18.pdf'
+uri:
+  -
+    value: 'private://2020-07/ITCS 4 Candidate Reference Form 10-31-18.pdf'
+    url: /system/files/2020-07/ITCS%204%20Candidate%20Reference%20Form%2010-31-18.pdf
+filemime:
+  -
+    value: application/pdf
+filesize:
+  -
+    value: 74359
+status:
+  -
+    value: true
+created:
+  -
+    value: '2020-07-20T11:54:18+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-20T11:56:31+00:00'
+    format: 'Y-m-d\TH:i:sP'
+_content_sync:
+  entity_type: file
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

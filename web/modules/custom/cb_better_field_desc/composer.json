@@ -1,0 +1,12 @@
+{
+    "name": "crystalbit-us/cb_better_field_desc",
+    "description": "Provides expanded field descriptions for any content type Create and Edit forms.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "James Tarleton",
+            "email": "jamestarleton@gmail.com"
+        }
+    ],
+    "require": {}
+}

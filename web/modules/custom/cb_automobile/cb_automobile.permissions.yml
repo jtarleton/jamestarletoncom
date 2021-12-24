@@ -1,0 +1,4 @@
+administer cb_automobile configuration:
+  title: 'Administer cb_automobile configuration'
+  description: 'Optional description.'
+  restrict access: true

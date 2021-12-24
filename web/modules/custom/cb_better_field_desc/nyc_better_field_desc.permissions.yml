@@ -1,0 +1,4 @@
+administer custom project descs:
+  title: 'Administer custom project field descriptions'
+  description: 'Administer custom project field descriptions'
+  restrict access: TRUE
