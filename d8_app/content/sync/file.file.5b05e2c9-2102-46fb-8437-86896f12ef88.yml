@@ -1,0 +1,39 @@
+uuid:
+  -
+    value: 5b05e2c9-2102-46fb-8437-86896f12ef88
+langcode:
+  -
+    value: en
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+filename:
+  -
+    value: Capture.PNG
+uri:
+  -
+    value: 'public://inline-images/Capture.PNG'
+    url: /sites/default/files/inline-images/Capture.PNG
+filemime:
+  -
+    value: image/png
+filesize:
+  -
+    value: 1888193
+status:
+  -
+    value: true
+created:
+  -
+    value: '2020-07-20T00:29:01+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-20T00:30:06+00:00'
+    format: 'Y-m-d\TH:i:sP'
+_content_sync:
+  entity_type: file
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

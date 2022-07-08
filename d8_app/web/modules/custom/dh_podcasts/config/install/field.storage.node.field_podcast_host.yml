@@ -1,0 +1,20 @@
+uuid: a77589e5-6a72-435d-8bb9-cf16a3966cbf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_podcast_host
+field_name: field_podcast_host
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

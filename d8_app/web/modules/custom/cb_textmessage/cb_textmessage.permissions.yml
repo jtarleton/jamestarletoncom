@@ -1,0 +1,4 @@
+administer cb_textmessage configuration:
+  title: 'Administer cb_textmessage configuration'
+  description: 'Optional description.'
+  restrict access: true

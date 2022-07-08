@@ -1,0 +1,89 @@
+uuid:
+  -
+    value: 572c649f-00de-47f1-a9a3-c2e89c96627f
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T17:12:45+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Government ----------------------- NYC Voting'
+created:
+  -
+    value: '2020-07-19T15:46:50+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T17:12:45+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p><strong>Voting info</strong></p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://vote.nyc.ny.us\">vote.nyc.ny.us</a></li>\r\n\t<li>election district 031</li>\r\n\t<li>assembly district 36</li>\r\n\t<li>polling site ps70</li>\r\n\t<li>queens-30</li>\r\n\t<li>Q070</li>\r\n\t<li>3045 42nd st</li>\r\n</ul>\r\n"
+    format: basic_html
+    processed: "<p><strong>Voting info</strong></p>\n\n<ul><li><a href=\"https://vote.nyc.ny.us\">vote.nyc.ny.us</a></li>\n\t<li>election district 031</li>\n\t<li>assembly district 36</li>\n\t<li>polling site ps70</li>\n\t<li>queens-30</li>\n\t<li>Q070</li>\n\t<li>3045 42nd st</li>\n</ul>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2:
+  -
+    display: true
+    description: 'voting card'
+    target_type: file
+    target_uuid: 1edba6f9-b6ad-4b7e-a6cc-7ece22806191
+  -
+    display: true
+    description: 'voter info'
+    target_type: file
+    target_uuid: 00c7ad3a-0a7d-49c2-a606-1e5b37bcfc90
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: b323f187-4790-48cf-ba49-015be301034e
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    file:
+      - file.file.1edba6f9-b6ad-4b7e-a6cc-7ece22806191
+      - file.file.00c7ad3a-0a7d-49c2-a606-1e5b37bcfc90
+    taxonomy_term:
+      - taxonomy_term.categories.b323f187-4790-48cf-ba49-015be301034e

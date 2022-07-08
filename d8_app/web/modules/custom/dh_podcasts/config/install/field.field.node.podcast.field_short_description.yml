@@ -1,0 +1,21 @@
+uuid: ddda8792-80e0-44aa-af07-9fbe5ad6d992
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_short_description
+    - node.type.podcast
+  module:
+    - text
+id: node.podcast.field_short_description
+field_name: field_short_description
+entity_type: node
+bundle: podcast
+label: 'Short Description'
+description: ' To be used in Podcast Landing Hero Banner'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

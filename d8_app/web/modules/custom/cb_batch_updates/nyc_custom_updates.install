@@ -1,0 +1,166 @@
+<?php
+use Drupal\nyc_custom_updates\Utils\NycCommentUpdater;
+use Drupal\nyc_custom_updates\Controller\NycCustomUpdatesBatchController;
+/**
+ * @file
+ * Install, update and uninstall functions for the nyc_custom_updates module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function nyc_custom_updates_install() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+
+  if (PHP_SAPI !== 'cli') {
+    // $config_url = Url::fromUri('base://admin/config/content/honeypot');
+    \Drupal::messenger()->addMessage(t(
+      'NYC Custom Updates installed successfully.'
+    ));
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function nyc_custom_updates_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Implements hook_schema().
+ */
+function nyc_custom_updates_schema() {
+  $schema = [];
+  if (!db_table_exists('comment__field_comment_location_summary')) {
+    $schema['comment__field_comment_location_summary'] = [
+      'description' => 'Comment location summary.',
+      'fields' => [
+        'bundle' => [
+          'description' => 'bundle',
+          'type' => 'varchar',
+          'length' => '32',
+          'not null' => FALSE,
+          'default' => '',
+        ],
+        'deleted'=>  [
+          'description' => 'deleted',
+          'type' => 'int',
+          'size'=>'tiny',
+          'length' => '4',
+          'not null' => TRUE,
+          'default' => 0,
+        ],
+        'entity_id' =>  [
+          'description' => 'entity_id',
+          'type' => 'int',
+          'length' => '10',
+          'not null' => TRUE,
+          'default' => 0,
+        ],
+        'revision_id' =>  [
+          'description' => 'revision_id',
+          'type' => 'int',
+          'length' => '10',
+          'not null' => FALSE,
+          'default' => 0,
+        ],
+        'langcode' =>  [
+          'description' => 'langcode',
+          'type' => 'varchar',
+          'length' => '32',
+          'not null' => TRUE,
+          'default' => '',
+        ],
+        'delta' =>  [
+          'description' => 'delta',
+          'type' => 'int',
+          'length' => '10',
+          'not null' => TRUE,
+          'default' => 0,
+        ],
+        'field_comment_location_summary_value' =>  [
+          'description' => 'field_comment_location_summary_value',
+          'type' => 'varchar',
+          'length' => '128',
+          'not null' => FALSE,
+          'default' => '',
+        ]
+      ],
+      'primary key' => ['entity_id','deleted','delta','langcode'],
+      'indexes' => [
+        'bundle' => [
+          'bundle',
+        ],
+        'revision_id' => [
+          'revision_id',
+        ]
+      ]
+    ];
+  }
+  return $schema;
+}
+
+/**
+ * Adds a location summary textfield to comments.
+ */
+function nyc_custom_updates_update_8101() {
+  $fields = [
+    'bundle',
+    'deleted',
+    'entity_id',
+    'revision_id',
+    'langcode',
+    'delta',
+    'field_comment_location_summary_value'
+  ];
+
+  foreach ($fields as $field)  {
+    if (!db_field_exists('comment__field_comment_location_summary', $field)) {
+      throw new UpdateException('The comment__field_comment_location_summary.' 
+        . $field . ' column must exist before running this update.');
+    }
+  }
+ 
+  // Clear the caches to ensure the comment definitions are current.
+  \Drupal::entityTypeManager()->clearCachedDefinitions();
+  \Drupal::service('entity_type.repository')->clearCachedDefinitions();
+
+  $updater = new NycCommentUpdater;
+  $ct = $updater->getAllEmptyLocSummaryCommentsCt();
+  return t($ct . ' comments with empty location summary staged for update.');
+} 
+
+
+
+function nyc_custom_updates_install_8101() {
+
+}
+
+/**
+ * Adds data for a location summary value to comments.
+ * 8101 - Implements hook_post_update_NAME where NAME can be a arbitrary machine name.
+ */
+function nyc_custom_updates_post_update_comment_loc_summary_8101(&$sandbox) {
+  $num_processed = NycCustomUpdatesBatchController::executeCommentBatchProcess();
+
+  return t('@count comments processed.', ['@count' => $num_processed]);
+}
+ 
+/**
+ * Implements hook_requirements().
+ */
+function nyc_custom_updates_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+    $value = mt_rand(0, 100);
+    $requirements['nyc_custom_updates_status'] = [
+      'title' => t('nyc_custom_updates status'),
+      'value' => t('nyc_custom_updates value: @value', ['@value' => $value]),
+      'severity' => $value > 50 ? REQUIREMENT_INFO : REQUIREMENT_WARNING,
+    ];
+  }
+
+  return $requirements;
+}

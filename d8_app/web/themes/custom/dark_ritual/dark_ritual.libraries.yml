@@ -1,0 +1,19 @@
+global-styling:
+  version: 1.x
+  css:
+    base:
+      css/picnic.min.css: {}
+      css/dark_ritual.css: {}
+      css/colors.css: {}
+datatable:
+  version: 1.12
+  js: "https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"
+global-scripts:
+  version: 1.x
+  js:
+    js/dark_ritual.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    - datatables/datatables
+    - datatables/datatables_core

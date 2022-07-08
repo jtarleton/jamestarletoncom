@@ -1,0 +1,6 @@
+services:
+  cb_finance.event_subscriber:
+    class: Drupal\cb_finance\EventSubscriber\CbFinanceSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

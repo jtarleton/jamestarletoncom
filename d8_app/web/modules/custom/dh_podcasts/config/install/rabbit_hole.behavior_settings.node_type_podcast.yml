@@ -1,0 +1,14 @@
+uuid: e5bab6fe-410a-4d3e-8e59-931bf5c6a018
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.podcast
+id: node_type_podcast
+entity_type_id: node_type
+entity_id: podcast
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,15 @@
+cb_command_checker.example:
+  path: '/cb-command-checker/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_command_checker\Controller\CbCommandCheckerController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_command_checker.settings_form:
+  path: '/admin/config/system/cb-command-checker'
+  defaults:
+    _title: 'cb_command_checker settings'
+    _form: 'Drupal\cb_command_checker\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_command_checker configuration'

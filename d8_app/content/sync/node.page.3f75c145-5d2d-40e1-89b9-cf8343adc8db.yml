@@ -1,0 +1,76 @@
+uuid:
+  -
+    value: 3f75c145-5d2d-40e1-89b9-cf8343adc8db
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T16:23:38+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Government -----------------------  Index'
+created:
+  -
+    value: '2020-07-18T23:32:09+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T16:23:38+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>City</p>\r\n\r\n<ul>\r\n\t<li>NYC Jury Duty</li>\r\n</ul>\r\n\r\n<p>State</p>\r\n\r\n<ul>\r\n\t<li><a href=\"/node/43\">NYS Voting</a></li>\r\n\t<li>NYS Dept of Labor</li>\r\n\t<li>NYS Dept of Motor Vehicles</li>\r\n\t<li>NYS Dept of Taxation</li>\r\n</ul>\r\n\r\n<p>Federal</p>\r\n\r\n<ul>\r\n\t<li>US Passport</li>\r\n\t<li>US Social Security</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n"
+    format: basic_html
+    processed: "<p>City</p>\n\n<ul><li>NYC Jury Duty</li>\n</ul><p>State</p>\n\n<ul><li><a href=\"/node/43\">NYS Voting</a></li>\n\t<li>NYS Dept of Labor</li>\n\t<li>NYS Dept of Motor Vehicles</li>\n\t<li>NYS Dept of Taxation</li>\n</ul><p>Federal</p>\n\n<ul><li>US Passport</li>\n\t<li>US Social Security</li>\n</ul><p>\_</p>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2: {  }
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: b323f187-4790-48cf-ba49-015be301034e
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    taxonomy_term:
+      - taxonomy_term.categories.b323f187-4790-48cf-ba49-015be301034e

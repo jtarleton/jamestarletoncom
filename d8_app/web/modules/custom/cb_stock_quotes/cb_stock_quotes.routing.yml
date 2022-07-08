@@ -1,0 +1,31 @@
+cb_stock_quotes.example:
+  path: '/cb-stock-quotes/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_stock_quotes\Controller\CbStockQuotesController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_stock_quotes.settings_form:
+  path: '/admin/config/system/cb-stock-quotes'
+  defaults:
+    _title: 'cb_stock_quotes settings'
+    _form: 'Drupal\cb_stock_quotes\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_stock_quotes configuration'
+
+cb_stock_quotes.example:
+  path: '/cb-stock-quotes/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_stock_quotes\Controller\CbStockQuotesController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_stock_quotes.settings_form:
+  path: '/admin/config/system/cb-stock-quotes'
+  defaults:
+    _title: 'cb_stock_quotes settings'
+    _form: 'Drupal\cb_stock_quotes\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_stock_quotes configuration'

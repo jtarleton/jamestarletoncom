@@ -1,0 +1,21 @@
+uuid: 46948b28-1a19-42ce-9ec4-a5719d3aa6a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_about_the_podcast
+    - node.type.podcast
+  module:
+    - text
+id: node.podcast.field_about_the_podcast
+field_name: field_about_the_podcast
+entity_type: node
+bundle: podcast
+label: 'About the Podcast'
+description: 'To be used in Podcast Details component on Podcast Landing Page and for output on Podcast Details Page'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

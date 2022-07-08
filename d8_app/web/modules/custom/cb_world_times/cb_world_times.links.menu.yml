@@ -1,0 +1,6 @@
+cb_world_times.settings_form:
+  title: CB World Times
+  description: Configure CB World Times.
+  parent: system.admin_config_system
+  route_name: cb_world_times.settings_form
+  weight: 10

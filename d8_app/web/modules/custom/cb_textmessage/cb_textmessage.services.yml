@@ -1,0 +1,6 @@
+services:
+  cb_textmessage.event_subscriber:
+    class: Drupal\cb_textmessage\EventSubscriber\CbTextmessageSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

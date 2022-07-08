@@ -1,0 +1,6 @@
+cb_textmessage.settings_form:
+  title: cb_textmessage
+  description: Configure cb_textmessage.
+  parent: system.admin_config_system
+  route_name: cb_textmessage.settings_form
+  weight: 10

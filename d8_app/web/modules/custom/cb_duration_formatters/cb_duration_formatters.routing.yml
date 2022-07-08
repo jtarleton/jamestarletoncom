@@ -1,0 +1,15 @@
+cb_duration_formatters.settings_form:
+  path: '/admin/config/system/cb-duration-formatters'
+  defaults:
+    _title: 'cb_duration_formatters settings'
+    _form: 'Drupal\cb_duration_formatters\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_duration_formatters configuration'
+
+cb_duration_formatters.cb_durationatters_settings_php:
+  path: '/admin/config/system/cb-durationatters-settings-php'
+  defaults:
+    _title: 'Cb durationatters settings php'
+    _form: 'Drupal\cb_duration_formatters\Form\CbDurationFormattersSettings.php'
+  requirements:
+    _permission: 'administer site configuration'

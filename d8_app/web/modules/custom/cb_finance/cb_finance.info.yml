@@ -1,0 +1,6 @@
+name: cb_finance
+type: module
+description: Personal finance functionalities including monthly budget and personal financial statements.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

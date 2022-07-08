@@ -1,0 +1,4 @@
+administer cb_maps configuration:
+  title: 'Administer cb_maps configuration'
+  description: 'Optional description.'
+  restrict access: true

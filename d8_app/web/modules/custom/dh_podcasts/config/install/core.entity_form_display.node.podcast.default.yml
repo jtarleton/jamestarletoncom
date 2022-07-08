@@ -1,0 +1,328 @@
+uuid: ae0f4b56-ab8f-40c2-a9d9-e8184ff3d3a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.podcast.body
+    - field.field.node.podcast.field_16_9_image
+    - field.field.node.podcast.field_about_the_podcast
+    - field.field.node.podcast.field_allow_in_pub_srch_results
+    - field.field.node.podcast.field_allow_in_site_srch_results
+    - field.field.node.podcast.field_content_type
+    - field.field.node.podcast.field_date
+    - field.field.node.podcast.field_header_title
+    - field.field.node.podcast.field_image
+    - field.field.node.podcast.field_podcast_contributors
+    - field.field.node.podcast.field_podcast_host
+    - field.field.node.podcast.field_podcast_summary
+    - field.field.node.podcast.field_podcast_teaser_image
+    - field.field.node.podcast.field_short_description
+    - field.field.node.podcast.field_short_title
+    - field.field.node.podcast.field_subtitle
+    - field.field.node.podcast.field_wistia_audio
+    - image.style.thumbnail
+    - node.type.podcast
+  module:
+    - cohesion_elements
+    - cohesion_templates
+    - content_moderation
+    - datetime
+    - field_group
+    - image
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_images:
+      children:
+        - field_podcast_teaser_image
+        - field_image
+        - field_16_9_image
+      label: Images
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Images for the Podcast'
+        required_fields: true
+    group_titles:
+      children:
+        - title
+        - field_header_title
+        - field_short_title
+      label: Titles
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Titles for the Podcast'
+        required_fields: true
+    group_index:
+      children:
+        - field_allow_in_site_srch_results
+        - field_allow_in_pub_srch_results
+      label: Index
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Indexing options for the podcast'
+        required_fields: true
+    group_text:
+      children:
+        - body
+        - field_podcast_summary
+        - field_subtitle
+      label: Text
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Text associated to the podcast'
+        required_fields: true
+    group_de:
+      children:
+        - field_date
+        - field_about_the_podcast
+        - field_short_description
+        - field_wistia_audio
+        - field_podcast_host
+        - field_podcast_contributors
+      label: Details
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_taxonomy:
+      children:
+        - field_content_type
+      label: Taxonomy
+      region: content
+      parent_name: ''
+      weight: 7
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Organizes the podcasts into types of content'
+        required_fields: true
+    group_meta:
+      children:
+        - moderation_state
+        - created
+        - status
+        - url_redirects
+        - path
+      label: Publishing
+      region: content
+      parent_name: ''
+      weight: 8
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Default Drupal fields related to the node.'
+        required_fields: true
+id: node.podcast.default
+targetEntityType: node
+bundle: podcast
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_16_9_image:
+    type: image_image
+    weight: 9
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_about_the_podcast:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_allow_in_pub_srch_results:
+    type: boolean_checkbox
+    weight: 20
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_allow_in_site_srch_results:
+    type: boolean_checkbox
+    weight: 19
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_content_type:
+    type: entity_reference_autocomplete
+    weight: 18
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_date:
+    type: datetime_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_header_title:
+    type: text_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 7
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_podcast_contributors:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_podcast_host:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_podcast_summary:
+    type: cohesion_template_selector_widget
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_podcast_teaser_image:
+    type: image_image
+    weight: 6
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_short_description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_title:
+    type: text_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subtitle:
+    type: text_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_wistia_audio:
+    type: cohesion_layout_builder_widget
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }

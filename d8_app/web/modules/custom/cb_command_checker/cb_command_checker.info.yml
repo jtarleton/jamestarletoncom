@@ -1,0 +1,6 @@
+name: cb_command_checker
+type: module
+description: A module to check for the availability of important packages and commands.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

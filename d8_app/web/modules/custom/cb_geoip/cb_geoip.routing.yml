@@ -1,0 +1,15 @@
+cb_geoip.example:
+  path: '/cb-geoip/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_geoip\Controller\CbGeoipController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_geoip.settings_form:
+  path: '/admin/config/system/cb-geoip'
+  defaults:
+    _title: 'cb_geoip settings'
+    _form: 'Drupal\cb_geoip\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_geoip configuration'

@@ -1,0 +1,21 @@
+uuid: c8a24cfb-c588-4ee5-b69f-5743bf897a1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header_title
+    - node.type.podcast
+  module:
+    - text
+id: node.podcast.field_header_title
+field_name: field_header_title
+entity_type: node
+bundle: podcast
+label: 'Header Title'
+description: 'Title rendered on a page as header title which may differ from official page title'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

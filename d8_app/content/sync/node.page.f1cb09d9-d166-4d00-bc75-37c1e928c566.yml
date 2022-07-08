@@ -1,0 +1,76 @@
+uuid:
+  -
+    value: f1cb09d9-d166-4d00-bc75-37c1e928c566
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T16:30:51+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Career -------------------------------------- Letter of References'
+created:
+  -
+    value: '2020-07-19T16:29:34+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T16:30:51+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p><strong>Letter of References</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><strong>Rob Rothe</strong></li>\r\n\t<li>CIO, Association of National Advertisers, Inc.</li>\r\n\t<li>516.508.6525</li>\r\n\t<li><span lang=\"zxx\"><a href=\"mailto:rrothe@ana.net\">rrothe@ana.net</a></span></li>\r\n\t<li><span lang=\"zxx\"><a href=\"http://www.ana.net\">http://www.ana.net</a></span></li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><strong>Clark Kee</strong></li>\r\n\t<li>Application Development Manager, Ad-ID, LLC</li>\r\n\t<li>646.258.8998</li>\r\n\t<li><span lang=\"zxx\"><a href=\"mailto:ckee@ad-id.org\">ckee@ad-id.org</a></span></li>\r\n\t<li><span lang=\"zxx\"><a href=\"http://www.ad-id.org\">http://www.ad-id.org</a></span></li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><strong>John Crowther</strong></li>\r\n\t<li>Director, SparkNotes</li>\r\n\t<li>212.414.6081</li>\r\n\t<li><span lang=\"zxx\"><a href=\"mailto:johncrowther@gmail.com\">johncrowther@gmail.com</a></span></li>\r\n\t<li><span lang=\"zxx\"><a href=\"http://www.sparknotes.com\">http://www.sparknotes.com</a></span></li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><strong>Maria Dente</strong></li>\r\n\t<li>Digital Solutions Project Manager, John Wiley &amp; Sons, Inc.</li>\r\n\t<li>917.572.5996</li>\r\n\t<li><span lang=\"zxx\"><a href=\"mailto:maria.dente@gmail.com\">maria.dente@gmail.com</a></span></li>\r\n\t<li><span lang=\"zxx\"><a href=\"http://www.wiley.com\">http://www.wiley.com</a></span></li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><strong>David McDonough</strong></li>\r\n\t<li>President, Phoenix Recycling, Inc.</li>\r\n\t<li>404.840.0101</li>\r\n\t<li><span lang=\"zxx\"><a href=\"mailto:dbmcdonough@gmail.com\">dbmcdonough@gmail.com</a></span></li>\r\n\t<li><span lang=\"zxx\"><a href=\"http://www.phoenixrecyclingnola.com\">http://www.phoenixrecyclingnola.com</a></span></li>\r\n</ul>\r\n"
+    format: basic_html
+    processed: "<p><strong>Letter of References</strong></p>\n\n<p>\_</p>\n\n<ul><li><strong>Rob Rothe</strong></li>\n\t<li>CIO, Association of National Advertisers, Inc.</li>\n\t<li>516.508.6525</li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"mailto:rrothe@ana.net\">rrothe@ana.net</a></span></li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"http://www.ana.net\">http://www.ana.net</a></span></li>\n</ul><p>\_</p>\n\n<ul><li><strong>Clark Kee</strong></li>\n\t<li>Application Development Manager, Ad-ID, LLC</li>\n\t<li>646.258.8998</li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"mailto:ckee@ad-id.org\">ckee@ad-id.org</a></span></li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"http://www.ad-id.org\">http://www.ad-id.org</a></span></li>\n</ul><p>\_</p>\n\n<ul><li><strong>John Crowther</strong></li>\n\t<li>Director, SparkNotes</li>\n\t<li>212.414.6081</li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"mailto:johncrowther@gmail.com\">johncrowther@gmail.com</a></span></li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"http://www.sparknotes.com\">http://www.sparknotes.com</a></span></li>\n</ul><p>\_</p>\n\n<ul><li><strong>Maria Dente</strong></li>\n\t<li>Digital Solutions Project Manager, John Wiley &amp; Sons, Inc.</li>\n\t<li>917.572.5996</li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"mailto:maria.dente@gmail.com\">maria.dente@gmail.com</a></span></li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"http://www.wiley.com\">http://www.wiley.com</a></span></li>\n</ul><p>\_</p>\n\n<ul><li><strong>David McDonough</strong></li>\n\t<li>President, Phoenix Recycling, Inc.</li>\n\t<li>404.840.0101</li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"mailto:dbmcdonough@gmail.com\">dbmcdonough@gmail.com</a></span></li>\n\t<li><span lang=\"zxx\" xml:lang=\"zxx\" xml:lang=\"zxx\"><a href=\"http://www.phoenixrecyclingnola.com\">http://www.phoenixrecyclingnola.com</a></span></li>\n</ul>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2: {  }
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: 1f8a0bf7-054e-4e3e-802a-61aa0f5da6e1
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    taxonomy_term:
+      - taxonomy_term.categories.1f8a0bf7-054e-4e3e-802a-61aa0f5da6e1

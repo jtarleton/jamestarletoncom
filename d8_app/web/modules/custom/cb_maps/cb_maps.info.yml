@@ -1,0 +1,6 @@
+name: cb_maps
+type: module
+description: Maps based on the mapael jquery library
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

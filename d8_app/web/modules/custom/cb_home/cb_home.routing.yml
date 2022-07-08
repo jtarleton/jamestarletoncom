@@ -1,0 +1,15 @@
+cb_home.example:
+  path: '/cb-home/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_home\Controller\CbHomeController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_home.settings_form:
+  path: '/admin/config/system/cb-home'
+  defaults:
+    _title: 'cb_home settings'
+    _form: 'Drupal\cb_home\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_home configuration'

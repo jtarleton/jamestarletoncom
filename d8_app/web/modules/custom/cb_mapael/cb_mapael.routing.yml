@@ -1,0 +1,15 @@
+cb_mapael.example:
+  path: '/cb-mapael/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_mapael\Controller\CbMapaelController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_mapael.settings_form:
+  path: '/admin/config/system/cb-mapael'
+  defaults:
+    _title: 'cb_mapael settings'
+    _form: 'Drupal\cb_mapael\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_mapael configuration'

@@ -1,0 +1,50 @@
+cb_textmessage.example:
+  path: '/cb-textmessage/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_textmessage\Controller\CbTextmessageController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_textmessage.sms_textmessage_form:
+  path: '/cb-textmessage'
+  defaults:
+    _title: 'Send a Text Message to James'
+    _form: 'Drupal\cb_textmessage\Form\SmsTextmessageForm'
+  requirements:
+    _permission: 'access content'
+cb_textmessage.sms_textmessage_anyone_form:
+  path: '/cb-textmessage/anyone'
+  defaults:
+    _title: 'Send a Text Message to Anyone'
+    _form: 'Drupal\cb_textmessage\Form\SmsTextmessageAnyoneForm'
+  requirements:
+    _permission: 'access content'
+cb_textmessage.sms_textmessage_sent:
+  path: '/cb-textmessage/sent'
+  defaults:
+    _title: 'Send a Text Message to James'
+    _controller: 'Drupal\cb_textmessage\Controller\CbTextmessageSentController::build'
+  requirements:
+    _permission: 'access content'
+cb_textmessage.sms_textmessage_sent_anyone:
+  path: '/cb-textmessage/sent-anyone'
+  defaults:
+    _title: 'Send a Text Message to Anyone'
+    _controller: 'Drupal\cb_textmessage\Controller\CbTextmessageSentController::sentAnyone'
+  requirements:
+    _permission: 'access content'
+cb_textmessage.mailmessage_form:
+  path: '/cb-mailmessage'
+  defaults:
+    _title: 'Send a E-Mail Message to James'
+    _form: 'Drupal\cb_textmessage\Form\MailmessageForm'
+  requirements:
+    _permission: 'access content'
+cb_textmessage.settings_form:
+  path: '/admin/config/system/cb-textmessage'
+  defaults:
+    _title: 'SMS Text Message Settings'
+    _form: 'Drupal\cb_textmessage\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_textmessage configuration'

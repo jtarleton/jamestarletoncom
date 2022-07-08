@@ -1,0 +1,6 @@
+cb_maps.settings_form:
+  title: cb_maps
+  description: Configure cb_maps.
+  parent: system.admin_config_system
+  route_name: cb_maps.settings_form
+  weight: 10

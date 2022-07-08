@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Contains nyc_migrate.module.
+ */
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_help().
+ */
+function nyc_migrate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the nyc_migrate module.
+    case 'help.page.nyc_migrate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides migration functionality.') . '</p>';
+      return $output;
+    default:
+  }
+}
+
+/**
+ * Implements hook_suggestions_form_element_alter().
+ * @param array
+ * @param object implementing FormStateInterface
+ * @param string
+ */
+function nyc_migrate_form_alter(&$form, &$form_state, $form_id) {
+  $current_path = \Drupal::service('path.current')->getPath();
+}
+
+/**
+ * Implement hook_theme 
+ */
+function nyc_migrate_theme($existing, $type, $theme, $path) {
+  $module_handler = \Drupal::service('module_handler');
+
+  $module_path = $module_handler->getModule('nyc_migrate')->getPath() . '/';
+
+  $all_content_types = array_keys(\Drupal::service('nyc_migrate.nyc_migrate_helper_fns')->getAllContentTypes());
+
+  return;
+}

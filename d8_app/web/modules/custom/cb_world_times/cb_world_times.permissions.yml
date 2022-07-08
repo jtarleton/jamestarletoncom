@@ -1,0 +1,4 @@
+administer cb_world_times configuration:
+  title: 'Administer cb_world_times configuration'
+  description: 'Optional description.'
+  restrict access: true

@@ -1,0 +1,17 @@
+{
+    "name": "crystalbit-us/cb_maps",
+    "description": "Maps using neveldo/jQuery-Mapael",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "CrystalbitUs\\CbMaps\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "James Tarleton",
+            "email": "jamestarleton@gmail.com"
+        }
+    ],
+    "require": {}
+}

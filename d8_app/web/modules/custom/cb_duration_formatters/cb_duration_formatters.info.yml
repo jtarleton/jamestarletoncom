@@ -1,0 +1,6 @@
+name: cb_duration_formatters
+type: module
+description: Field formatters for integers representing duration in seconds.
+package: Crystalbit
+core: 8.x
+core_version_requirement: ^8 || ^9

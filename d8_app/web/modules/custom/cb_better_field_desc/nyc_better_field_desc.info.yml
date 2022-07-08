@@ -1,0 +1,6 @@
+name: 'Nyc Better Field Descriptions'
+type: module
+description: 'Adds a custom configuration page for BO and Admins to be able to set instructions for fields. These instructions will then show up on project node edit page, just below title of the field and can be multiline.'
+core: 8.x
+package: 'Custom'
+dependencies:

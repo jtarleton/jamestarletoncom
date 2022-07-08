@@ -1,0 +1,65 @@
+# This file defines tabs and connects to a routing.yml entry to each.
+# base_route...?
+
+# It does not define anything in the Drupal admin menu, or a URL path for a route.
+# Look in this module's "links.menu.yml" and "routing.yml" for those settings.
+
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project:
+  route_name : nyc_better_field_desc.nyc_better_field_desc_configuration_form_project
+  title: Field Instructions
+  base_route: nyc_better_field_desc_configuration_form_project
+  weight: 10
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub1: # (2) Default subtab, same route as the parent tab, so different tab ID. 
+  title: Project
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_project
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub2: # (3) Non-default subtab alongside the "Blocks" default tab
+  title: Map
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_map
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub3: # (4) Non-default subtab alongside the "Blocks" default tab
+  title: Overview
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_overview_page
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub4: # (5) Non-default subtab alongside the "Blocks" default tab
+  title: Document
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_document
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub6: # (6) Non-default subtab alongside the "Blocks" default tab
+  title: News
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_news
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub7: # (7) Non-default subtab alongside the "Blocks" default tab
+  title: Event
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_event
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub8: # (8) Non-default subtab alongside the "Blocks" default tab
+  title: Video
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_video
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub9: # (9) Non-default subtab alongside the "Blocks" default tab
+  title: Project Link
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_project_link
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub10: # (10) Non-default subtab alongside the "Blocks" default tab
+  title: List Page
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_list_page
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.project.sub11: # (11) Non-default subtab alongside the "Blocks" default tab
+  title: Page
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_page
+  parent_id: nyc_better_field_desc.nyc_better_field_desc_configuration_form.project
+  weight: 20
+nyc_better_field_desc.nyc_better_field_desc_configuration_form.styling:
+  route_name: nyc_better_field_desc.nyc_better_field_desc_configuration_form_styling
+  title: Settings
+  base_route: nyc_better_field_desc_configuration_form_project
+  weight: 20

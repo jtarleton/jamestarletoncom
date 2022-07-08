@@ -1,0 +1,52 @@
+uuid:
+  -
+    value: 015f32ee-e211-40af-ab5c-7e1bafcbcbca
+langcode:
+  -
+    value: en
+vid:
+  -
+    target_id: categories
+    target_type: taxonomy_vocabulary
+    target_uuid: 9aa55449-3193-45ff-bf1a-715d4c52b866
+revision_created:
+  -
+    value: '2020-07-19T19:19:33+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_user: {  }
+revision_log_message: {  }
+status:
+  -
+    value: true
+name:
+  -
+    value: Maps
+description:
+  -
+    value: "<p>Maps</p>\r\n"
+    format: basic_html
+    processed: '<p>Maps</p>'
+weight:
+  -
+    value: 0
+parent:
+  -
+    target_id: 0
+changed:
+  -
+    value: '2020-07-19T19:19:33+00:00'
+    format: 'Y-m-d\TH:i:sP'
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+_content_sync:
+  entity_type: taxonomy_term
+  entity_dependencies: {  }

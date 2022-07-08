@@ -1,0 +1,4 @@
+administer cb_apache_log_parser configuration:
+  title: 'Administer cb_apache_log_parser configuration'
+  description: 'Optional description.'
+  restrict access: true

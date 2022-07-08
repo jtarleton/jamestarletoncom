@@ -1,0 +1,15 @@
+cb_weather.example:
+  path: '/cb-weather/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_weather\Controller\CbWeatherController::build'
+  requirements:
+    _permission: 'access content'
+
+cb_weather.settings_form:
+  path: '/admin/config/system/cb-weather'
+  defaults:
+    _title: 'cb_weather settings'
+    _form: 'Drupal\cb_weather\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_weather configuration'

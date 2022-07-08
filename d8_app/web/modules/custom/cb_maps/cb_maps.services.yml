@@ -1,0 +1,6 @@
+services:
+  cb_maps.event_subscriber:
+    class: Drupal\cb_maps\EventSubscriber\CbMapsSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

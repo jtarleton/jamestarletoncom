@@ -1,0 +1,4 @@
+services:
+  nyc_better_field_desc.nyc_better_field_desc_helper_fns:
+    class: Drupal\nyc_better_field_desc\Utils\NycBetterFieldDescHelperFns
+

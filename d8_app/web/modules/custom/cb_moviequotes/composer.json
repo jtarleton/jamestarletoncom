@@ -1,0 +1,12 @@
+{
+    "name": "crystalbit-us/cb_moviequotes",
+    "description": "Installs and outputs movie quotations exposed through a REST web API.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "James Tarleton",
+            "email": "jamestarleton@gmail.com"
+        }
+    ],
+    "require": {}
+}

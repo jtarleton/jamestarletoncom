@@ -1,0 +1,6 @@
+services:
+  cb_weather.event_subscriber:
+    class: Drupal\cb_weather\EventSubscriber\CbWeatherSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

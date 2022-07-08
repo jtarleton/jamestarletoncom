@@ -1,0 +1,29 @@
+cb_project_portfolio.example:
+  path: '/cb-project-portfolio/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\cb_project_portfolio\Controller\CbProjectPortfolioController::build'
+  requirements:
+    _permission: 'access content'
+cb_project_portfolio.examplejson:
+  path: '/cb-project-portfolio/examplejson'
+  defaults:
+    _title: 'Example 3'
+    _controller: '\Drupal\cb_project_portfolio\Controller\CbProjectPortfolioController::json'
+  requirements:
+    _permission: 'access content'
+cb_project_portfolio.settings_form:
+  path: '/admin/config/system/cb-project-portfolio'
+  defaults:
+    _title: 'cb_project_portfolio settings'
+    _form: 'Drupal\cb_project_portfolio\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cb_project_portfolio configuration'
+
+cb_project_portfolio.resume_mailer:
+  path: '/cb-project-portfolio/resume-mailer'
+  defaults:
+    _title: 'Resume mailer'
+    _form: 'Drupal\cb_project_portfolio\Form\ResumeMailerForm'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,83 @@
+uuid:
+  -
+    value: 9d7d801c-1f4d-4852-b558-6beb716ebed5
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T19:30:06+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: HHonors
+created:
+  -
+    value: '2020-07-19T19:29:13+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T19:30:06+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>Hhonors</p>\r\n"
+    format: basic_html
+    processed: '<p>Hhonors</p>'
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2:
+  -
+    display: true
+    description: hhonors
+    target_type: file
+    target_uuid: 371b7360-8afa-48c8-9317-ba22e93595cb
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: 8bcbc861-3c73-4056-8ecf-fd9f3a57bd45
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    file:
+      - file.file.371b7360-8afa-48c8-9317-ba22e93595cb
+    taxonomy_term:
+      - taxonomy_term.categories.8bcbc861-3c73-4056-8ecf-fd9f3a57bd45

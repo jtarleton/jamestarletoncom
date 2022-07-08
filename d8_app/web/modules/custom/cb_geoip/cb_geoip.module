@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for cb_geoip module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+
+function cb_geoip_theme() {
+  $theme = [
+    'geoip_mini_block' => [
+      'variables' => [
+        'block_content' => NULL,
+      ],
+    ]
+  ];
+  return $theme;
+}

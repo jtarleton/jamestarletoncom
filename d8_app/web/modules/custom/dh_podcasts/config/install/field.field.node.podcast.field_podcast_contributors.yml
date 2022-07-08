@@ -1,0 +1,29 @@
+uuid: 5f58f91d-1281-415f-9eb3-e7c38498898d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_podcast_contributors
+    - node.type.podcast
+id: node.podcast.field_podcast_contributors
+field_name: field_podcast_contributors
+entity_type: node
+bundle: podcast
+label: 'Podcast Contributors'
+description: 'Contributors to the podcast episode'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    filter:
+      type: _none
+    include_anonymous: true
+field_type: entity_reference

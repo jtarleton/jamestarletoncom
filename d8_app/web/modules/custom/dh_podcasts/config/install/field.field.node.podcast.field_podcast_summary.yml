@@ -1,0 +1,23 @@
+uuid: 3b3b1ca8-aef8-4503-8fd0-75a0daccb6ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_podcast_summary
+    - node.type.podcast
+  module:
+    - cohesion_templates
+id: node.podcast.field_podcast_summary
+field_name: field_podcast_summary
+entity_type: node
+bundle: podcast
+label: 'Podcast Summary'
+description: 'Summary Text associated with a podcast for use in short descriptions as well as page SEO meta description'
+required: false
+translatable: false
+default_value:
+  -
+    selected_template: __default__
+default_value_callback: ''
+settings: {  }
+field_type: cohesion_template_selector

@@ -1,0 +1,4 @@
+administer nyc_custom_updates configuration:
+  title: 'Administer nyc_custom_updates configuration'
+  description: 'Optional description.'
+  restrict access: true

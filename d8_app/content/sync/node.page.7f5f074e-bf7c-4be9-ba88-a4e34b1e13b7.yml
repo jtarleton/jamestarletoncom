@@ -1,0 +1,76 @@
+uuid:
+  -
+    value: 7f5f074e-bf7c-4be9-ba88-a4e34b1e13b7
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T14:46:11+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Money, Banking, and Finance - Bank Accounts'
+created:
+  -
+    value: '2020-07-19T11:13:25+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T14:46:11+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>Banks</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://www.chase.com\">Chase</a></li>\r\n\t<li><a href=\"https://www.simple.com\">Simple BBVA</a></li>\r\n</ul>\r\n\r\n<p>Brokerage Accounts</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://www.fidelity.com\">Fidelity</a></li>\r\n\t<li><a href=\"https://www.ml.com/\">Merrill Edge</a></li>\r\n</ul>\r\n\r\n<p>Credit Cards</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://www.citi.com\">Citi </a>Mastercard</li>\r\n\t<li><a href=\"https://www.americanexpress.com\">American Express</a></li>\r\n</ul>\r\n\r\n<p>Loans</p>\r\n\r\n<ul>\r\n\t<li>SallieMae Student Loan</li>\r\n\t<li><a href=\"https://www.upstart.com\">Upstart </a>Personal Loan</li>\r\n</ul>\r\n"
+    format: basic_html
+    processed: "<p>Banks</p>\n\n<ul><li><a href=\"https://www.chase.com\">Chase</a></li>\n\t<li><a href=\"https://www.simple.com\">Simple BBVA</a></li>\n</ul><p>Brokerage Accounts</p>\n\n<ul><li><a href=\"https://www.fidelity.com\">Fidelity</a></li>\n\t<li><a href=\"https://www.ml.com/\">Merrill Edge</a></li>\n</ul><p>Credit Cards</p>\n\n<ul><li><a href=\"https://www.citi.com\">Citi </a>Mastercard</li>\n\t<li><a href=\"https://www.americanexpress.com\">American Express</a></li>\n</ul><p>Loans</p>\n\n<ul><li>SallieMae Student Loan</li>\n\t<li><a href=\"https://www.upstart.com\">Upstart </a>Personal Loan</li>\n</ul>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2: {  }
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: f8542e29-4b1d-4cf7-8b53-e7ce5975ea32
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    taxonomy_term:
+      - taxonomy_term.categories.f8542e29-4b1d-4cf7-8b53-e7ce5975ea32

@@ -1,0 +1,12 @@
+{
+    "name": "crystalbit-us/cb_project_portfolio",
+    "description": "Track and manage a portfolio of IT projects, provide a block and page display, or a Views Slideshow.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "James Tarleton",
+            "email": "jamestarleton@gmail.com"
+        }
+    ],
+    "require": {}
+}

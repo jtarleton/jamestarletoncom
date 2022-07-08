@@ -1,0 +1,83 @@
+uuid:
+  -
+    value: e245cc6d-adfc-4cf8-82de-2660e8b429cc
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T19:34:55+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Marriott Rewards'
+created:
+  -
+    value: '2020-07-19T19:32:33+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T19:34:55+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>marriott</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href=\"https://www.marriottrewards.com\">https://www.marriottrewards.com</a></p>\r\n"
+    format: basic_html
+    processed: "<p>marriott</p>\n\n<p>\_</p>\n\n<p><a href=\"https://www.marriottrewards.com\">https://www.marriottrewards.com</a></p>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2:
+  -
+    display: true
+    description: 'marriott card'
+    target_type: file
+    target_uuid: 9d6370c3-bedf-49c7-a3f1-6d303014802c
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: 8bcbc861-3c73-4056-8ecf-fd9f3a57bd45
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    file:
+      - file.file.9d6370c3-bedf-49c7-a3f1-6d303014802c
+    taxonomy_term:
+      - taxonomy_term.categories.8bcbc861-3c73-4056-8ecf-fd9f3a57bd45

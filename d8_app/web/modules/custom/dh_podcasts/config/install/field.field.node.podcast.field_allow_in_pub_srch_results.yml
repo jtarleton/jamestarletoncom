@@ -1,0 +1,23 @@
+uuid: 136a025d-477f-41af-8731-613f806e3a5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_allow_in_pub_srch_results
+    - node.type.podcast
+id: node.podcast.field_allow_in_pub_srch_results
+field_name: field_allow_in_pub_srch_results
+entity_type: node
+bundle: podcast
+label: 'Allow in Public Search Results'
+description: 'Allow in Public Search Results'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

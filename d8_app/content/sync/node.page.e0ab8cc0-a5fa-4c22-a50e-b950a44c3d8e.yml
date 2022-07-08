@@ -1,0 +1,95 @@
+uuid:
+  -
+    value: e0ab8cc0-a5fa-4c22-a50e-b950a44c3d8e
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T15:57:49+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Insurance  - ---------------  Health- UhcOxford'
+created:
+  -
+    value: '2020-07-19T14:29:19+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T15:57:49+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>myuhc</p>\r\n"
+    format: basic_html
+    processed: '<p>myuhc</p>'
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2:
+  -
+    display: true
+    description: 'uhcOxford card'
+    target_type: file
+    target_uuid: a03b7c79-34e1-4405-a86e-d238f089de9c
+  -
+    display: true
+    description: 'uhcOxford card2'
+    target_type: file
+    target_uuid: 60194265-fba1-4c0d-8947-7a7a05aa87a6
+  -
+    display: true
+    description: 'uhcOxford card'
+    target_type: file
+    target_uuid: 7fa66a27-b35a-47de-a977-0efa5d638789
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: aa213ce1-37dc-47f5-994e-d32a196bf179
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    file:
+      - file.file.a03b7c79-34e1-4405-a86e-d238f089de9c
+      - file.file.60194265-fba1-4c0d-8947-7a7a05aa87a6
+      - file.file.7fa66a27-b35a-47de-a977-0efa5d638789
+    taxonomy_term:
+      - taxonomy_term.categories.aa213ce1-37dc-47f5-994e-d32a196bf179

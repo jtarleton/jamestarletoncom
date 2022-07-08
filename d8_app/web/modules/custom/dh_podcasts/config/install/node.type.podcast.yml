@@ -1,0 +1,18 @@
+uuid: cf06ba8a-7b40-4774-b40e-df4cda312f22
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Podcast
+type: podcast
+description: 'Describes a set of Podcast episodes.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

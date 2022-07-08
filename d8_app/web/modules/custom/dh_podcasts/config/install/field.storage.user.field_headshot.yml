@@ -1,0 +1,30 @@
+uuid: b900a839-28ad-4a5d-90a5-6d7a2d1725ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - user
+id: user.field_headshot
+field_name: field_headshot
+entity_type: user
+type: image
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+  default_image:
+    uuid: 120252cb-e26d-406b-984f-43f19bfb2912
+    alt: Headshot
+    title: Headshot
+    width: 280
+    height: 280
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,12 @@
+cb_duration_formatters.settings_form:
+  title: cb_duration_formatters
+  description: Configure cb_duration_formatters.
+  parent: system.admin_config_system
+  route_name: cb_duration_formatters.settings_form
+  weight: 10
+
+cb_duration_formatters.cb_durationatters_settings_php:
+  title: Cb durationatters settings php
+  parent: system.admin_config_system
+  route_name: cb_duration_formatters.cb_durationatters_settings_php
+  weight: 10

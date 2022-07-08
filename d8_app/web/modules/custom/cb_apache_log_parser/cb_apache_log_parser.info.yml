@@ -1,0 +1,6 @@
+name: cb_apache_log_parser
+type: module
+description: Parse apache logs to a human readable format, and provided in a block.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

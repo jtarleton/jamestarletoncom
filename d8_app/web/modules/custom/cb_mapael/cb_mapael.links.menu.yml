@@ -1,0 +1,6 @@
+cb_mapael.settings_form:
+  title: cb_mapael
+  description: Configure cb_mapael.
+  parent: system.admin_config_system
+  route_name: cb_mapael.settings_form
+  weight: 10

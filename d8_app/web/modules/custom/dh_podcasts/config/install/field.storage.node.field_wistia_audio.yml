@@ -1,0 +1,20 @@
+uuid: cecf6a25-f04b-44c2-973b-d6d26b7852d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - cohesion_elements
+    - node
+id: node.field_wistia_audio
+field_name: field_wistia_audio
+entity_type: node
+type: cohesion_entity_reference_revisions
+settings:
+  target_type: cohesion_layout
+module: cohesion_elements
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,6 @@
+name: cb_project_portfolio
+type: module
+description: Track your IT projects in a portfolio.
+package: crystalbit-us
+core: 8.x
+core_version_requirement: ^8 || ^9

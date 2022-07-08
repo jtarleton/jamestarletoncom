@@ -1,0 +1,6 @@
+services:
+  cb_geoip.event_subscriber:
+    class: Drupal\cb_geoip\EventSubscriber\CbGeoipSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

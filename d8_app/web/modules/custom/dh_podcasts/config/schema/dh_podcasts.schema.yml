@@ -1,0 +1,7 @@
+field.formatter.settings.dh_podcasts_social_media_link:
+  type: mapping
+  label: Social Media Link formatter settings
+  mapping:
+    foo:
+      type: string
+      label: Foo

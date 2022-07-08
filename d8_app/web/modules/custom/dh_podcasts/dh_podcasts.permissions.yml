@@ -1,0 +1,4 @@
+administer dh_podcasts configuration:
+  title: 'Administer Podcasts configuration'
+  description: 'Optional description.'
+  restrict access: true

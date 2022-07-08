@@ -1,0 +1,24 @@
+<?php
+
+function dark_ritual_preprocess_html() {
+	
+	
+}
+
+function dark_ritual_page_attachments(array &$attachments) {
+ $attachments['#attached']['library'][] = 'dark_ritual/global-styling';
+  $attachments['#attached']['library'][] = 'dark_ritual/global-scripts';
+$attachments['#attached']['library'][] = 'dark_ritual/datatable';
+
+}
+
+function dark_ritual_preprocess_page() {
+	
+	
+}
+
+function dark_ritual_theme() {
+
+	$theme = [];	
+
+}

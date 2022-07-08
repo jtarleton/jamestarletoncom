@@ -1,0 +1,55 @@
+uuid:
+  -
+    value: d6bb05c4-297d-4500-a76a-87d626595af7
+langcode:
+  -
+    value: en
+preferred_langcode:
+  -
+    value: en
+preferred_admin_langcode:
+  -
+    value: en
+name:
+  -
+    value: jtarleton
+mail:
+  value: jamestarleton@gmail.com
+timezone:
+  -
+    value: America/New_York
+status:
+  value: '1'
+created:
+  -
+    value: '2020-02-29T15:02:12+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2021-05-20T19:46:51+00:00'
+    format: 'Y-m-d\TH:i:sP'
+access:
+  -
+    value: '2021-11-26T22:02:35+00:00'
+    format: 'Y-m-d\TH:i:sP'
+login:
+  -
+    value: '2021-11-26T16:04:02+00:00'
+    format: 'Y-m-d\TH:i:sP'
+init:
+  -
+    value: jamestarleton@gmail.com
+roles:
+  - authenticated
+  - administrator
+default_langcode:
+  -
+    value: true
+user_picture: {  }
+_content_sync:
+  entity_type: user
+  entity_dependencies: {  }
+pass:
+  -
+    value: $S$ESf1U.JlBp.m1p.odd.2YooUdNRE1vuduC0yjEN3wWKiyoQ.NVM/
+    pre_hashed: true

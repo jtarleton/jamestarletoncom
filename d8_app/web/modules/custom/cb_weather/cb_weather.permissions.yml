@@ -1,0 +1,4 @@
+administer cb_weather configuration:
+  title: 'Administer cb_weather configuration'
+  description: 'Optional description.'
+  restrict access: true

@@ -1,0 +1,131 @@
+uuid:
+  -
+    value: fd77a247-c03f-481e-b8dc-272842ad921f
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T12:21:42+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Personal Financial Statements'
+created:
+  -
+    value: '2020-07-19T11:24:59+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T12:21:42+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<ul>\r\n\t<li>Personal Balance Sheet</li>\r\n</ul>\r\n\r\n<p>2007 | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>Personal Income Statements</li>\r\n</ul>\r\n\r\n<p>2007 | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020</p>\r\n"
+    format: basic_html
+    processed: "<ul><li>Personal Balance Sheet</li>\n</ul><p>2007 | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020</p>\n\n<p>\_</p>\n\n<ul><li>Personal Income Statements</li>\n</ul><p>2007 | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020</p>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2:
+  -
+    display: true
+    description: 'PFS 2019'
+    target_type: file
+    target_uuid: 5150a6f3-232f-48ad-89fb-544f7347fac5
+  -
+    display: true
+    description: 'PFS 2018'
+    target_type: file
+    target_uuid: b13ab726-7b73-4f96-ba72-6b1a53980088
+  -
+    display: true
+    description: 'PFS 2017'
+    target_type: file
+    target_uuid: 8b218d33-8257-4fce-80bf-1c644e18c8f8
+  -
+    display: true
+    description: 'PFS 2016'
+    target_type: file
+    target_uuid: c5e56387-5fb6-43bd-86e7-deadc67364e5
+  -
+    display: true
+    description: 'PFS 2015'
+    target_type: file
+    target_uuid: 3474fbea-0aae-4d08-a325-ec2a99832705
+  -
+    display: true
+    description: 'PFS 2014'
+    target_type: file
+    target_uuid: 2e61574e-9fd8-493a-8c6c-83be4c913ac8
+  -
+    display: true
+    description: 'PFS 2013'
+    target_type: file
+    target_uuid: 3fa9b85d-9850-4b22-b9af-2e4ef12f7238
+  -
+    display: true
+    description: 'PFS 2012'
+    target_type: file
+    target_uuid: 3e484c0e-4617-4cac-ba78-6072cdcf0e6e
+  -
+    display: true
+    description: 'PFS 2011'
+    target_type: file
+    target_uuid: 5900e680-ddd8-497b-b0ee-db2b2bc4003c
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: f8542e29-4b1d-4cf7-8b53-e7ce5975ea32
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    file:
+      - file.file.5150a6f3-232f-48ad-89fb-544f7347fac5
+      - file.file.b13ab726-7b73-4f96-ba72-6b1a53980088
+      - file.file.8b218d33-8257-4fce-80bf-1c644e18c8f8
+      - file.file.c5e56387-5fb6-43bd-86e7-deadc67364e5
+      - file.file.3474fbea-0aae-4d08-a325-ec2a99832705
+      - file.file.2e61574e-9fd8-493a-8c6c-83be4c913ac8
+      - file.file.3fa9b85d-9850-4b22-b9af-2e4ef12f7238
+      - file.file.3e484c0e-4617-4cac-ba78-6072cdcf0e6e
+      - file.file.5900e680-ddd8-497b-b0ee-db2b2bc4003c
+    taxonomy_term:
+      - taxonomy_term.categories.f8542e29-4b1d-4cf7-8b53-e7ce5975ea32

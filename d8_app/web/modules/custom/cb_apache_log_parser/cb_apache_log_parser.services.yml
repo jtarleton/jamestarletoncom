@@ -1,0 +1,11 @@
+services:
+  cb_apache_log_parser.event_subscriber:
+    class: Drupal\cb_apache_log_parser\EventSubscriber\CbApacheLogParserSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }
+  cb_apache_log_parser.cb_apache_log_parser:
+    class: Drupal\cb_apache_log_parser\Utils\CbApacheLogParser
+    arguments: ['@messenger']
+    tags:
+      - { name: cb_apache_log_parser }

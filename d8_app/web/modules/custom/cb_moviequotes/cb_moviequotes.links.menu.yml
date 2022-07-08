@@ -1,0 +1,6 @@
+moviequotes.settings_form:
+  title: moviequotes
+  description: Configure moviequotes.
+  parent: system.admin_config_system
+  route_name: moviequotes.settings_form
+  weight: 10

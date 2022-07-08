@@ -1,0 +1,4 @@
+administer cb_command_checker configuration:
+  title: 'Administer cb_command_checker configuration'
+  description: 'Optional description.'
+  restrict access: true

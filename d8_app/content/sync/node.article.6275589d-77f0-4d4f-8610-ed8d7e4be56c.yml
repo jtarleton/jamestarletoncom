@@ -1,0 +1,83 @@
+uuid:
+  -
+    value: 6275589d-77f0-4d4f-8610-ed8d7e4be56c
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: article
+    target_type: node_type
+    target_uuid: 87727734-e26d-4648-a0dd-4381ea0398d6
+revision_timestamp:
+  -
+    value: '2021-05-08T15:58:10+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: Emojis
+created:
+  -
+    value: '2021-05-08T15:55:42+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2021-05-08T15:58:10+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: true
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>🍇 Grapes</p>\r\n\r\n<p>🍈 Melon</p>\r\n\r\n<p>🍉 Watermelon</p>\r\n\r\n<p>🍊 Tangerine</p>\r\n\r\n<p>🍋 Lemon</p>\r\n\r\n<p>🍌 Banana</p>\r\n\r\n<p>🍍 Pineapple</p>\r\n\r\n<p>🥭 Mango</p>\r\n\r\n<p>🍎 Red Apple</p>\r\n\r\n<p>🍏 Green Apple</p>\r\n\r\n<p>🍐 Pear</p>\r\n\r\n<p>🍑 Peach</p>\r\n\r\n<p>🍒 Cherries</p>\r\n\r\n<p>🍓 Strawberry</p>\r\n\r\n<p>🥝 Kiwi Fruit</p>\r\n\r\n<p>🍅 Tomato</p>\r\n\r\n<p>🥥 Coconut</p>\r\n\r\n<p>🥑 Avocado</p>\r\n\r\n<p>🍆 Eggplant</p>\r\n\r\n<p>🥔 Potato</p>\r\n\r\n<p>🥕 Carrot</p>\r\n\r\n<p>🌽 Ear of Corn</p>\r\n\r\n<p>🌶️ Hot Pepper&nbsp;</p>\r\n\r\n<p>🥒 Cucumber</p>\r\n\r\n<p>🥬 Leafy Green</p>\r\n\r\n<p>🥦 Broccoli</p>\r\n\r\n<p>🍕 Pizza</p>\r\n"
+    format: full_html
+    processed: "<p>🍇 Grapes</p>\n\n<p>🍈 Melon</p>\n\n<p>🍉 Watermelon</p>\n\n<p>🍊 Tangerine</p>\n\n<p>🍋 Lemon</p>\n\n<p>🍌 Banana</p>\n\n<p>🍍 Pineapple</p>\n\n<p>🥭 Mango</p>\n\n<p>🍎 Red Apple</p>\n\n<p>🍏 Green Apple</p>\n\n<p>🍐 Pear</p>\n\n<p>🍑 Peach</p>\n\n<p>🍒 Cherries</p>\n\n<p>🍓 Strawberry</p>\n\n<p>🥝 Kiwi Fruit</p>\n\n<p>🍅 Tomato</p>\n\n<p>🥥 Coconut</p>\n\n<p>🥑 Avocado</p>\n\n<p>🍆 Eggplant</p>\n\n<p>🥔 Potato</p>\n\n<p>🥕 Carrot</p>\n\n<p>🌽 Ear of Corn</p>\n\n<p>🌶️ Hot Pepper\_</p>\n\n<p>🥒 Cucumber</p>\n\n<p>🥬 Leafy Green</p>\n\n<p>🥦 Broccoli</p>\n\n<p>🍕 Pizza</p>\n"
+    summary: ''
+    summary_processed: ''
+comment:
+  -
+    status: 2
+    cid: 0
+    last_comment_timestamp: 1620489490
+    last_comment_name: null
+    last_comment_uid: 2
+    comment_count: 0
+field_image: {  }
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: a2fa8958-a3b3-47fc-abad-e971753ff0f7
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    taxonomy_term:
+      - taxonomy_term.tags.a2fa8958-a3b3-47fc-abad-e971753ff0f7

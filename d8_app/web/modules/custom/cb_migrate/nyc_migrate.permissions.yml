@@ -1,0 +1,4 @@
+administer nyc migrate:
+  title: 'Administer nyc migrate'
+  description: 'Administer nyc migrate'
+  restrict access: FALSE

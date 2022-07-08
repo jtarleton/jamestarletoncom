@@ -1,0 +1,21 @@
+uuid: d556cf0c-5e66-4eba-902b-71c98edb11f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subtitle
+    - node.type.podcast
+  module:
+    - text
+id: node.podcast.field_subtitle
+field_name: field_subtitle
+entity_type: node
+bundle: podcast
+label: Subtitle
+description: 'Subtitle for the content item'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

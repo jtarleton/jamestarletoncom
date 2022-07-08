@@ -1,0 +1,23 @@
+uuid: c35e3887-1587-456d-a1aa-9711ecf4e276
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_allow_in_site_srch_results
+    - node.type.podcast
+id: node.podcast.field_allow_in_site_srch_results
+field_name: field_allow_in_site_srch_results
+entity_type: node
+bundle: podcast
+label: 'Allow in Site Search Results'
+description: 'Allow in Site Search Results'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

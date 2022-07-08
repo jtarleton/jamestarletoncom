@@ -1,0 +1,4 @@
+administer cb_geoip configuration:
+  title: 'Administer cb_geoip configuration'
+  description: 'Optional description.'
+  restrict access: true

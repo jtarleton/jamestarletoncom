@@ -1,0 +1,39 @@
+/* 
+  Just a few classes for special field descriptions.
+*/
+p.nycbetterdesc, span.nycbetterdesc  {
+  font-style:normal;
+  color:#000;
+  padding-top:0; margin-top: 0;
+}
+
+p.nycbetterdesc2, span.nycbetterdesc2  {
+  font-style:normal;
+  color:#575757; /* dark gray */
+  padding-top:0; margin-top: 0;
+}
+
+p.nycbetterdesc3, span.nycbetterdesc3  {
+  font-style:italic;
+  color:#000;
+  padding-top:0; margin-top: 0;
+}
+
+p.nycbetterdesc4, span.nycbetterdesc4  {
+  font-style:italic;
+  color:#575757; /* dark gray */
+  padding-top:0; margin-top: 0;
+}
+p.mb-none {
+  margin-bottom: 0;
+}
+p.nycbetterdesc7, span.nycbetterdesc7  {
+  font-style:normal;
+  color:#196F94; /* dark blue */
+  padding-top:0; margin-top: 0;  
+}
+p.nycbetterdesc8, span.nycbetterdesc8  {
+  font-style:italic;
+  color:#196F94; /* dark blue */
+  padding-top:0; margin-top: 0;  
+}

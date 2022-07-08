@@ -1,0 +1,76 @@
+uuid:
+  -
+    value: d586ec90-5364-4c90-87f9-b2ae9025496a
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-08-03T10:18:29+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Home WLAN Network notes'
+created:
+  -
+    value: '2020-08-02T22:17:49+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-08-03T10:18:29+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p><a href=\"https://old.totusoft.com/index.html\">https://old.totusoft.com/index.html</a></p>\r\n\r\n<p>LAN Speed Test</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Wireless LAN adapter Wi-Fi:</p>\r\n\r\n<p>&nbsp;&nbsp; Connection-specific DNS Suffix&nbsp; . :<br />\r\n&nbsp;&nbsp; Description . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 8265<br />\r\n&nbsp;&nbsp; Physical Address. . . . . . . . . : 04-ED-33-25-94-4B<br />\r\n&nbsp;&nbsp; DHCP Enabled. . . . . . . . . . . : Yes<br />\r\n&nbsp;&nbsp; Autoconfiguration Enabled . . . . : Yes</p>\r\n\r\n<p><br />\r\n&nbsp;&nbsp; Link-local IPv6 Address . . . . . : fe80::c0bc:6115:8275:9aaf%7(Preferred)</p>\r\n\r\n<p><br />\r\n&nbsp;&nbsp; IPv4 Address. . . . . . . . . . . : <strong>192.168.4.23</strong>(Preferred) (internal IP of the Windows PC)</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><br />\r\n&nbsp;&nbsp; Subnet Mask . . . . . . . . . . . : 255.255.252.0</p>\r\n\r\n<p><br />\r\n&nbsp;&nbsp; Lease Obtained. . . . . . . . . . : Sunday, August 2, 2020 4:56:30 PM<br />\r\n&nbsp;&nbsp; Lease Expires . . . . . . . . . . : Sunday, August 2, 2020 8:56:29 PM<br />\r\n&nbsp; &nbsp;</p>\r\n\r\n<p>&nbsp;&nbsp; Default Gateway . . . . . . . . . : <strong>192.168.4.1</strong><br />\r\n&nbsp;&nbsp; (IP of Bedroom EERO Pro router)</p>\r\n\r\n<p>&nbsp;&nbsp; DHCP Server . . . . . . . . . . . : <strong>192.168.4.1 (</strong>IP of Bedroom EERO Pro router)</p>\r\n\r\n<p>&nbsp;&nbsp; DHCPv6 IAID . . . . . . . . . . . : 84208947<br />\r\n&nbsp; &nbsp;<br />\r\n&nbsp;&nbsp; DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-25-1A-AA-DC-98-FA-9B-20-68-B7<br />\r\n&nbsp; &nbsp;<br />\r\n&nbsp;&nbsp; DNS Servers . . . . . . . . . . . : <strong>192.168.4.1</strong> (IP of Bedroom EERO Pro router)<br />\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> 209.18.47.61</strong><br />\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>209.18.47.62</strong></p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br />\r\n&nbsp;&nbsp; NetBIOS over Tcpip. . . . . . . . : Enabled</p>\r\n"
+    format: basic_html
+    processed: "<p><a href=\"https://old.totusoft.com/index.html\">https://old.totusoft.com/index.html</a></p>\n\n<p>LAN Speed Test</p>\n\n<p>\_</p>\n\n<p>Wireless LAN adapter Wi-Fi:</p>\n\n<p>\_\_ Connection-specific DNS Suffix\_ . :<br />\n\_\_ Description . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 8265<br />\n\_\_ Physical Address. . . . . . . . . : 04-ED-33-25-94-4B<br />\n\_\_ DHCP Enabled. . . . . . . . . . . : Yes<br />\n\_\_ Autoconfiguration Enabled . . . . : Yes</p>\n\n<p><br />\n\_\_ Link-local IPv6 Address . . . . . : fe80::c0bc:6115:8275:9aaf%7(Preferred)</p>\n\n<p><br />\n\_\_ IPv4 Address. . . . . . . . . . . : <strong>192.168.4.23</strong>(Preferred) (internal IP of the Windows PC)</p>\n\n<p>\_</p>\n\n<p><br />\n\_\_ Subnet Mask . . . . . . . . . . . : 255.255.252.0</p>\n\n<p><br />\n\_\_ Lease Obtained. . . . . . . . . . : Sunday, August 2, 2020 4:56:30 PM<br />\n\_\_ Lease Expires . . . . . . . . . . : Sunday, August 2, 2020 8:56:29 PM<br />\n\_ \_</p>\n\n<p>\_\_ Default Gateway . . . . . . . . . : <strong>192.168.4.1</strong><br />\n\_\_ (IP of Bedroom EERO Pro router)</p>\n\n<p>\_\_ DHCP Server . . . . . . . . . . . : <strong>192.168.4.1 (</strong>IP of Bedroom EERO Pro router)</p>\n\n<p>\_\_ DHCPv6 IAID . . . . . . . . . . . : 84208947<br />\n\_ \_<br />\n\_\_ DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-25-1A-AA-DC-98-FA-9B-20-68-B7<br />\n\_ \_<br />\n\_\_ DNS Servers . . . . . . . . . . . : <strong>192.168.4.1</strong> (IP of Bedroom EERO Pro router)<br />\n\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_<strong> 209.18.47.61</strong><br />\n\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ <strong>209.18.47.62</strong></p>\n\n<p>\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \_<br />\n\_\_ NetBIOS over Tcpip. . . . . . . . : Enabled</p>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2: {  }
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: 0edf9c40-c7cd-4301-bd02-9d9b13e9ca63
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    taxonomy_term:
+      - taxonomy_term.categories.0edf9c40-c7cd-4301-bd02-9d9b13e9ca63

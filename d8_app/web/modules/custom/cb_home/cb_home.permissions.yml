@@ -1,0 +1,4 @@
+administer cb_home configuration:
+  title: 'Administer cb_home configuration'
+  description: 'Optional description.'
+  restrict access: true

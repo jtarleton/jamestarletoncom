@@ -1,0 +1,6 @@
+cb_finance.settings_form:
+  title: cb_finance
+  description: Configure cb_finance.
+  parent: system.admin_config_system
+  route_name: cb_finance.settings_form
+  weight: 10

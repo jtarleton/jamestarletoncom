@@ -1,0 +1,14 @@
+# modules/some_module/config/install/system.action.some_module_some_action.yml
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - onesip_role_promote
+  module:
+    - onesip_role_promote
+id: onesip_role_promote_reject_access_request_action
+label: 'Process content admin access request action'
+type: node
+plugin: "onesip_role_promote_reject_access_request_action"
+configuration: {  }

@@ -1,0 +1,6 @@
+cb_home.settings_form:
+  title: cb_home
+  description: Configure cb_home.
+  parent: system.admin_config_system
+  route_name: cb_home.settings_form
+  weight: 10

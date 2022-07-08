@@ -1,0 +1,39 @@
+uuid:
+  -
+    value: fb3cdfff-5806-4935-b1b8-8f49cf6f3cee
+langcode:
+  -
+    value: en
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+filename:
+  -
+    value: resume-jamestarleton.docx
+uri:
+  -
+    value: 'private://2020-07/resume-jamestarleton.docx'
+    url: /system/files/2020-07/resume-jamestarleton.docx
+filemime:
+  -
+    value: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+filesize:
+  -
+    value: 29512
+status:
+  -
+    value: true
+created:
+  -
+    value: '2020-07-19T16:28:11+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T16:28:52+00:00'
+    format: 'Y-m-d\TH:i:sP'
+_content_sync:
+  entity_type: file
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7

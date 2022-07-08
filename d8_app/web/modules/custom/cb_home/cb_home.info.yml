@@ -1,0 +1,6 @@
+name: cb_home
+type: module
+description: Custom functionality for the homepage
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

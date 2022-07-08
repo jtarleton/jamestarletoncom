@@ -1,0 +1,6 @@
+name: cb_weather
+type: module
+description: Display a block with weather information.
+package: crystalbit-us
+core: 8.x
+core_version_requirement: ^8 || ^9

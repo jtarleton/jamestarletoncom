@@ -1,0 +1,12 @@
+{
+    "name": "crystalbit-us/cb_health",
+    "description": "Tracks health information and provides a block display.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "James Tarleton",
+            "email": "jamestarleton@gmail.com"
+        }
+    ],
+    "require": {}
+}

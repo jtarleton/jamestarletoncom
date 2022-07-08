@@ -1,0 +1,4 @@
+administer cb_health configuration:
+  title: 'Administer cb_health configuration'
+  description: 'Optional description.'
+  restrict access: true

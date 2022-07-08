@@ -1,0 +1,15 @@
+moviequotes.example:
+  path: '/moviequotes/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\moviequotes\Controller\MoviequotesController::build'
+  requirements:
+    _permission: 'access content'
+
+moviequotes.settings_form:
+  path: '/admin/config/system/moviequotes'
+  defaults:
+    _title: 'moviequotes settings'
+    _form: 'Drupal\moviequotes\Form\SettingsForm'
+  requirements:
+    _permission: 'administer moviequotes configuration'

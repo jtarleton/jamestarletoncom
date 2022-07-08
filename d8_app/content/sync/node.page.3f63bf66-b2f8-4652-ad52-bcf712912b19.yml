@@ -1,0 +1,76 @@
+uuid:
+  -
+    value: 3f63bf66-b2f8-4652-ad52-bcf712912b19
+langcode:
+  -
+    value: en
+type:
+  -
+    target_id: page
+    target_type: node_type
+    target_uuid: 486c74c1-c5fa-43e6-98f4-8b493969882e
+revision_timestamp:
+  -
+    value: '2020-07-19T15:27:00+00:00'
+    format: 'Y-m-d\TH:i:sP'
+revision_uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+revision_log: {  }
+status:
+  -
+    value: true
+uid:
+  -
+    target_type: user
+    target_uuid: d6bb05c4-297d-4500-a76a-87d626595af7
+title:
+  -
+    value: 'Food and Beverages Index'
+created:
+  -
+    value: '2020-07-19T00:00:47+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2020-07-19T15:27:00+00:00'
+    format: 'Y-m-d\TH:i:sP'
+promote:
+  -
+    value: false
+sticky:
+  -
+    value: false
+default_langcode:
+  -
+    value: true
+revision_translation_affected:
+  -
+    value: true
+path:
+  -
+    alias: null
+    pid: null
+    langcode: en
+body:
+  -
+    value: "<p>Coffee Guide</p>\r\n\r\n<p><a href=\"/node/40\">List of Favorite Coffee Roasters</a></p>\r\n"
+    format: basic_html
+    processed: "<p>Coffee Guide</p>\n\n<p><a href=\"/node/40\">List of Favorite Coffee Roasters</a></p>"
+    summary: ''
+    summary_processed: ''
+feeds_item: {  }
+field_file2: {  }
+field_tags:
+  -
+    target_type: taxonomy_term
+    target_uuid: 3b904eea-1d65-445a-b2cf-5a309102b2f2
+_content_sync:
+  entity_type: node
+  entity_dependencies:
+    user:
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+      - user.user.d6bb05c4-297d-4500-a76a-87d626595af7
+    taxonomy_term:
+      - taxonomy_term.categories.3b904eea-1d65-445a-b2cf-5a309102b2f2

@@ -1,0 +1,21 @@
+uuid: 6ab34948-318b-4240-a225-2e605dba258c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_type
+    - node.type.podcast
+id: node.podcast.field_content_type
+field_name: field_content_type
+entity_type: node
+bundle: podcast
+label: 'Content Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,6 @@
+name: dh_podcasts
+type: module
+description: Podcasts
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

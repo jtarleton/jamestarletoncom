@@ -1,0 +1,6 @@
+cb_command_checker.settings_form:
+  title: cb_command_checker
+  description: Configure cb_command_checker.
+  parent: system.admin_config_system
+  route_name: cb_command_checker.settings_form
+  weight: 10
