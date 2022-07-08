@@ -1,6 +1,0 @@
-cb_automobile.settings_form:
-  title: cb_automobile
-  description: Configure cb_automobile.
-  parent: system.admin_config_system
-  route_name: cb_automobile.settings_form
-  weight: 10

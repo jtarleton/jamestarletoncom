@@ -1,4 +1,0 @@
-services:
-  nyc_migrate.nyc_migrate_helper_fns:
-    class: Drupal\nyc_migrate\Utils\NycMigrateHelperFns
-

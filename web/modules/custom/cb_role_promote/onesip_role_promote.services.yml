@@ -1,5 +1,0 @@
-services:
-  onesip_role_promote.view_data_provider:
-    class: Drupal\onesip_role_promote\EventSubscriber\OnesipRolePromoteEventSubscriber
-    tags:
-      - { name: event_subscriber }

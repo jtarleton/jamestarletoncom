@@ -1,6 +1,0 @@
-services:
-  cb_health.event_subscriber:
-    class: Drupal\cb_health\EventSubscriber\CbHealthSubscriber
-    arguments: ['@messenger']
-    tags:
-      - { name: event_subscriber }

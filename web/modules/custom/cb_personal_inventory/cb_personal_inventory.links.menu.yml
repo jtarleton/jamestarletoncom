@@ -1,6 +1,0 @@
-cb_personal_inventory.settings_form:
-  title: cb_personal_inventory
-  description: Configure cb_personal_inventory.
-  parent: system.admin_config_system
-  route_name: cb_personal_inventory.settings_form
-  weight: 10

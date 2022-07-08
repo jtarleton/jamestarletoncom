@@ -1,5 +1,0 @@
-name: 'NYC'
-description: 'A dummy module to fix config dependency issue'
-core: 8.x
-type: module
-package: Custom

@@ -1,7 +1,0 @@
-services:
-  nyc_migrate.commands:
-    class: \Drupal\nyc_migrate\Commands\NycMigrateCustomCommands
-    tags:
-      - { name: drush.command }
-    arguments: ['@entity_type.manager', '@logger.factory']  
-

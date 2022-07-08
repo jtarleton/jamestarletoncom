@@ -1,6 +1,0 @@
-services:
-  cb_automobile.event_subscriber:
-    class: Drupal\cb_automobile\EventSubscriber\CbAutomobileSubscriber
-    arguments: ['@messenger']
-    tags:
-      - { name: event_subscriber }

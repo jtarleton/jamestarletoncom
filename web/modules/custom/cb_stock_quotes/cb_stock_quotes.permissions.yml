@@ -1,4 +1,0 @@
-administer cb_stock_quotes configuration:
-  title: 'Administer cb_stock_quotes configuration'
-  description: 'Optional description.'
-  restrict access: true

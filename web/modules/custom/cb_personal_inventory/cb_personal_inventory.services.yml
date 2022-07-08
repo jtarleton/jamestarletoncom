@@ -1,6 +1,0 @@
-services:
-  cb_personal_inventory.event_subscriber:
-    class: Drupal\cb_personal_inventory\EventSubscriber\CbPersonalInventorySubscriber
-    arguments: ['@messenger']
-    tags:
-      - { name: event_subscriber }

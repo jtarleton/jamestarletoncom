@@ -1,4 +1,0 @@
-administer cb_project_portfolio configuration:
-  title: 'Administer cb_project_portfolio configuration'
-  description: 'Optional description.'
-  restrict access: true

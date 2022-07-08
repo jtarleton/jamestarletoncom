@@ -1,6 +1,0 @@
-services:
-  cb_project_portfolio.event_subscriber:
-    class: Drupal\cb_project_portfolio\EventSubscriber\CbProjectPortfolioSubscriber
-    arguments: ['@messenger']
-    tags:
-      - { name: event_subscriber }

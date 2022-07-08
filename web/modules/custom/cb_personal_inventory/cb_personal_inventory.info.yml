@@ -1,6 +1,0 @@
-name: cb_personal_inventory
-type: module
-description: Track an inventory of your personal possessions.
-package: crystalbit-us
-core: 8.x
-core_version_requirement: ^8 || ^9

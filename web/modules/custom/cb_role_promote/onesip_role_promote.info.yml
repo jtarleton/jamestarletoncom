@@ -1,8 +1,0 @@
-name: 'Onesip Role Promote - Custom'
-description: 'Onesip custom role promotion and VBO functionality'
-core: 8.x
-type: module
-package: Custom
-dependencies:
-  - node
-  - views_bulk_operations  

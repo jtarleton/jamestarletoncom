@@ -1,6 +1,0 @@
-name: cb_stock_quotes
-type: module
-description: Track a portfolio of ticker symbols.
-package: crystalbit-us
-core: 8.x
-core_version_requirement: ^8 || ^9

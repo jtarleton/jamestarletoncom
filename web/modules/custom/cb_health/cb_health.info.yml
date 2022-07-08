@@ -1,6 +1,0 @@
-name: cb_health
-type: module
-description: Track health information.
-package: crystalbit-us
-core: 8.x
-core_version_requirement: ^8 || ^9
